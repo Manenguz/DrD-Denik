@@ -1,0 +1,322 @@
+/* Pergamenový styl, kompaktní layout */
+body {
+background: #f4f1e4;
+font-family: "Georgia", serif;
+color: #2e2417;
+padding: 18px;
+margin: 0;
+}
+
+.sheet-container {
+background: #fbf8ef;
+border: 2px solid #c2ad8f;
+border-radius: 10px;
+padding: 18px;
+max-width: 980px;
+margin: 0 auto;
+box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+h1 {
+text-align: center;
+margin: 6px 0 14px 0;
+}
+
+/* Header grid: left stats, right info */
+.header-grid {
+display: flex;
+gap: 18px;
+align-items: flex-start;
+justify-content: space-between;
+flex-wrap: wrap;
+}
+
+/* left stats panel */
+.stats-panel {
+flex: 1 1 420px;
+min-width: 280px;
+}
+
+/* each stat line: name+max input on one row, boxes below */
+.stat-line {
+background: rgba(240,230,205,0.6);
+border: 1px solid #e0d0ad;
+padding: 8px;
+border-radius: 8px;
+margin-bottom: 8px;
+}
+
+.stat-name {
+font-weight: bold;
+display: inline-flex;
+align-items: center;
+gap: 8px;
+}
+
+/* small input for max, aligned with stat name */
+.stat-max-input {
+width: 52px;
+padding: 4px;
+border-radius: 6px;
+border: 1px solid #c8b798;
+background: #fff8f0;
+text-align: center;
+margin-left: 6px;
+}
+
+/* row of boxes (checkbox-like) */
+.boxes-row {
+margin-top: 8px;
+display: flex;
+gap: 6px;
+flex-wrap: wrap;
+}
+
+/* box */
+.box {
+width: 18px;
+height: 18px;
+border: 1px solid #7b674a;
+border-radius: 4px;
+background: #fff;
+cursor: pointer;
+box-sizing: border-box;
+}
+
+/* Vyčerpaný – červený */
+.box.active {
+  background: #e57373; /* světle červená */
+  border-color: #b53939;
+}
+
+/* right info panel */
+.info-panel {
+flex: 0 0 300px;
+min-width: 220px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+.top-info input {
+width: calc(50% - 8px);
+padding: 6px;
+border-radius: 6px;
+border: 1px solid #c8b798;
+background: #fff8f0;
+box-sizing: border-box;
+margin-right: 6px;
+}
+
+.money-xp {
+  background: rgba(240,230,205,0.6);
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #e0d0ad;
+
+  display: flex;
+  flex-direction: column; /* vertikální stack */
+  align-items: flex-end; /* zarovnání doprava */
+  gap: 6px;
+}
+
+.money-row, .xp-row {
+  display: flex;
+  flex-direction: column; /* každý label nad sebou */
+  gap: 4px;
+}
+
+.money-row label, .xp-row label {
+  display: flex;
+  justify-content: flex-end; /* label + input vpravo */
+  align-items: center;
+  gap: 6px;
+}
+
+.money-row input, .xp-row input {
+width: 86px;
+padding: 4px;
+border-radius: 6px;
+border: 1px solid #c8b798;
+background: #fff8f0;
+text-align: center;
+}
+
+/* sections */
+.section {
+margin-top: 14px;
+border-top: 1px solid #d1c1a3;
+padding-top: 10px;
+}
+
+.collapsible {
+background-color: #e9dcc2;
+color: #2e2417;
+cursor: pointer;
+padding: 8px 10px;
+width: 100%;
+border: none;
+text-align: left;
+font-weight: bold;
+font-size: 15px;
+border-radius: 6px;
+}
+
+.content {
+padding: 10px 6px;
+display: none;
+}
+
+/* content visible when active */
+.content.active {
+display: block;
+}
+
+/* textareas and inputs inside content */
+textarea {
+width: 100%;
+background-color: #fff8f0;
+border: 1px solid #c8b798;
+border-radius: 6px;
+padding: 6px;
+resize: vertical;
+font-family: inherit;
+box-sizing: border-box;
+margin-bottom: 8px;
+}
+
+.add-btn {
+margin-top: 6px;
+padding: 6px 10px;
+border: 1px solid #a89472;
+background: #e6d7b9;
+border-radius: 6px;
+cursor: pointer;
+}
+
+/* item rows (skills/weapons/equipment) */
+.items-list {
+margin-top: 8px;
+}
+
+.skill-row, .weapon-row, .equipment-row {
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+align-items: flex-start;
+margin-bottom: 8px;
+background: rgba(255,255,255,0.6);
+padding: 6px;
+border-radius: 6px;
+border: 1px solid #e6d0a3;
+}
+
+.skill-row input, .weapon-row input, .equipment-row input {
+background: #fff8f0;
+border: 1px solid #c8b798;
+border-radius: 6px;
+padding: 6px;
+box-sizing: border-box;
+}
+
+.skill-row input.name, .weapon-row input.name, .equipment-row input.name {
+flex: 0 0 25%;
+min-width: 140px;
+}
+
+.skill-row input.small, .weapon-row input.small, .equipment-row input.small {
+flex: 0 0 20%;
+min-width: 90px;
+}
+
+.skill-row textarea, .weapon-row textarea, .equipment-row textarea {
+flex: 1 1 45%;
+min-width: 180px;
+padding: 6px;
+border-radius: 6px;
+border: 1px solid #c8b798;
+}
+
+/* delete button */
+.delete-btn {
+background: #d96b6b;
+border: none;
+color: white;
+padding: 6px 8px;
+border-radius: 6px;
+cursor: pointer;
+}
+
+/* import/export area */
+.import-export {
+display: flex;
+gap: 10px;
+align-items: center;
+justify-content: center;
+margin-top: 6px;
+}
+
+/* responsive adjustments */
+@media (max-width: 760px) {
+.header-grid { flex-direction: column; }
+.info-panel { min-width: unset; flex: 1 1 auto; }
+.stat-name { display:block; margin-bottom:6px; }
+.stat-line { padding: 6px; }
+}
+
+/* Upravíme vzhled řádků tabulek (dovednosti, zbraně, vybavení) */
+table td {
+  vertical-align: middle;
+  padding: 4px;
+}
+
+/* Řádek přidávání nových záznamů – zarovnání na jednu řádku */
+.add-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+
+/* Každé pole má definovaný podíl šířky */
+.add-row input[name="name"],
+#new-skill-name, #new-weapon-name, #new-gear-name {
+  flex: 0 0 20%;
+}
+
+.add-row input[name="cost"],
+#new-skill-cost, #new-weapon-cost, #new-gear-cost {
+  flex: 0 0 20%;
+}
+
+.add-row input[name="desc"],
+#new-skill-desc, #new-weapon-desc, #new-gear-desc {
+  flex: 0 0 45%;
+}
+
+/* Tlačítko mazání nebo přidání – malá pevná šířka */
+.add-row button,
+.delete-btn {
+  flex: 0 0 5%;
+  min-width: 30px;
+  padding: 4px 6px;
+  background-color: #bfa98a;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+/* Zarovnání tlačítek na střed */
+.add-row button,
+table .delete-btn {
+  align-self: center;
+}
+
+
+/* Jizva – šedá */
+.box.injured {
+  background: #b0b0b0; /* světle šedá */
+  border-color: #7a7a7a;
+}

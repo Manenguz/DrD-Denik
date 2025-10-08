@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#c2ad8f">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').then(()=>console.log("SW registered"));
+  }
+</script>
+
+  <title>Deník hrdiny</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<!DOCTYPE html>
+
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DrD2 – Deník postavy</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="sheet-container">
+
+<header class="header-top">
+  <h1>📜 Deník hrdiny</h1>
+
+  <!-- Horní řádek: vlevo statistiky, vpravo peníze + XP -->
+  <div class="header-grid">
+    <!-- Levá: statistiky -->
+    <div class="stats-panel">
+      <div class="stat-line">
+        <label class="stat-name">Tělo
+          <input id="body-max" class="stat-max-input" type="number" min="1" max="12" value="6" />
+        </label>
+        <div id="body-boxes" class="boxes-row"></div>
+      </div>
+
+      <div class="stat-line">
+        <label class="stat-name">Duše
+          <input id="soul-max" class="stat-max-input" type="number" min="1" max="12" value="6" />
+        </label>
+        <div id="soul-boxes" class="boxes-row"></div>
+      </div>
+
+      <div class="stat-line">
+        <label class="stat-name">Vliv
+          <input id="influence-max" class="stat-max-input" type="number" min="1" max="12" value="6" />
+        </label>
+        <div id="influence-boxes" class="boxes-row"></div>
+      </div>
+    </div>
+
+    <!-- Pravá: jméno, rasa, peníze, xp -->
+    <div class="info-panel">
+      <div class="top-info">
+        <input id="character-name" placeholder="Jméno postavy" />
+        <input id="character-race" placeholder="Rasa" />
+      </div>
+
+      <div class="money-xp">
+        <div class="money-row">
+          <label>💰 Groše <input id="money-gros" type="number" min="0" value="0" /></label>
+          <label>Haléře <input id="money-hal" type="number" min="0" value="0" /></label>
+        </div>
+
+        <div class="xp-row">
+          <label>XP celkem <input id="xp-total" type="number" min="0" value="0" /></label>
+          <label>XP nevyužité <input id="xp-free" type="number" min="0" value="0" /></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Sekce: příběh -->
+<section class="section">
+  <button class="collapsible">📖 Příběh hrdiny</button>
+  <div class="content">
+    <label><strong>Jak se stal hrdinou:</strong></label>
+    <textarea id="origin-story" rows="5" placeholder="Původ, motivace..."></textarea>
+
+    <label><strong>Prožitá dobrodružství:</strong></label>
+    <textarea id="adventures" rows="6" placeholder="Seznam/úryvky dobrodružství..."></textarea>
+  </div>
+</section>
+
+<!-- Sekce: dovednosti (dynamické řádky) -->
+<section class="section">
+  <button class="collapsible">🎯 Dovednosti a schopnosti</button>
+  <div class="content">
+    <div id="skills-list" class="items-list"></div>
+    <div class="add-controls">
+      <button id="add-skill" class="add-btn">+ Přidat dovednost</button>
+    </div>
+<br />
+    <label><strong>🧬 Rasová zvláštní schopnost:</strong></label>
+    <textarea id="racial-ability" rows="3"></textarea>
+
+    <label><strong>💭 Povahový rys:</strong></label>
+    <textarea id="personality-trait" rows="3"></textarea>
+  </div>
+</section>
+
+<!-- Sekce: zbraně -->
+<section class="section">
+  <button class="collapsible">⚔️ Zbraně</button>
+  <div class="content">
+    <div id="weapons-list" class="items-list"></div>
+    <div class="add-controls">
+      <button id="add-weapon" class="add-btn">+ Přidat zbraň</button>
+    </div>
+  </div>
+</section>
+
+<!-- Sekce: vybavení -->
+<section class="section">
+  <button class="collapsible">🎒 Vybavení</button>
+  <div class="content">
+    <div id="equipment-list" class="items-list"></div>
+    <div class="add-controls">
+      <button id="add-equipment" class="add-btn">+ Přidat vybavení</button>
+    </div>
+  </div>
+</section>
+
+<!-- Import / Export -->
+<section class="section">
+  <div class="import-export">
+    <button id="save-btn">💾 Uložit (localStorage)</button>
+    <button id="export-btn">⬇️ Exportovat JSON</button>
+    <input id="import-file" type="file" accept=".json" />
+  </div>
+</section>
+
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
+
+
+  <script src="app.js"></script>
+</body>
+</html>
