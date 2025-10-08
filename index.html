@@ -127,6 +127,45 @@
       <button id="add-equipment" class="add-btn">+ Přidat vybavení</button>
     </div>
   </div>
+
+<section class="section">
+  <button class="collapsible">🛡️ Pomocník</button>
+  <div class="content">
+    
+<div class="helper-top-row">
+  <div class="half">
+    <input id="helper-name" class="top-info-input" placeholder="Jméno pomocníka" />
+  </div>
+  <div class="half">
+    <div class="stat-line">
+      <label>Pouto
+        <input id="helper-bond-max" class="stat-max-input" type="number" min="0" />
+      </label>
+      <div id="helper-bond-boxes" class="boxes-row"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    <!-- přes celou šířku -->
+    <label><strong>Charakteristika:</strong></label>
+    <textarea id="helper-description" rows="4" placeholder="Popis pomocníka..."></textarea>
+
+    <!-- jednolinkové vstupy -->
+    <div class="helper-single-row">
+      <input id="helper-boundary" placeholder="Hranice" />
+      <input id="helper-payment" placeholder="Platba" />
+    </div>
+
+    <!-- přes celou šířku -->
+    <label><strong>Zvláštní schopnosti:</strong></label>
+    <textarea id="helper-abilities" rows="3" placeholder="Seznam schopností..."></textarea>
+  </div>
+</section>
+
 </section>
 
 <!-- Import / Export -->

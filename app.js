@@ -1,5 +1,5 @@
 /* App logic: stats with 3-state boxes, dynamic items, import/export, persistence */
-const STORAGE_KEY = "drd2_denik_v2";
+const STORAGE_KEY = "drd2_denik_v3";
 
 /* Character data model */
 let character = {
@@ -16,7 +16,16 @@ let character = {
   weapons: [],     // {name, price, desc}
   equipment: [],   // {name, price, desc}
   story: { origin: "", adventures: "" },
-  extras: { racial: "", personality: "" }
+  extras: { racial: "", personality: "" },
+  helper: {
+    name: "",
+    bond: { max: 6, states: [] },
+    description: "",
+    boundary: "",
+    payment: "",
+    abilities: ""
+  },
+  collapsibles: {} // store collapsed state
 };
 
 /* ---------- Utilities: save/load ---------- */
@@ -40,7 +49,6 @@ function saveAll() {
     const maxInput = document.getElementById(stat + "-max");
     const max = parseInt(maxInput.value) || 0;
     character.stats[stat].max = max;
-    // read boxes states (0: free, 1: used, 2: scar)
     const boxes = document.getElementById(stat + "-boxes").children;
     character.stats[stat].states = [];
     for (let i = 0; i < boxes.length; i++) {
@@ -60,24 +68,45 @@ function saveAll() {
   character.weapons = readItemRows("weapons-list", ["name","price","desc"]);
   character.equipment = readItemRows("equipment-list", ["name","price","desc"]);
 
+  // helper
+  character.helper.name = document.getElementById("helper-name").value || "";
+  character.helper.description = document.getElementById("helper-description").value || "";
+  character.helper.boundary = document.getElementById("helper-boundary").value || "";
+  character.helper.payment = document.getElementById("helper-payment").value || "";
+  character.helper.abilities = document.getElementById("helper-abilities").value || "";
+
+  const bondBoxes = document.getElementById("helper-bond-boxes").children;
+  character.helper.bond.states = [];
+  for(let i=0;i<bondBoxes.length;i++){
+    const s = parseInt(bondBoxes[i].dataset.state) || 0;
+    character.helper.bond.states.push(s);
+  }
+  character.helper.bond.max = parseInt(document.getElementById("helper-bond-max").value) || 0;
+
+  // collapsibles state
+  document.querySelectorAll(".collapsible").forEach(btn=>{
+    const content = btn.nextElementSibling;
+    character.collapsibles[btn.textContent] = content.classList.contains("active");
+  });
+
   localStorage.setItem(STORAGE_KEY, JSON.stringify(character));
 }
 
 function loadAll() {
   const raw = localStorage.getItem(STORAGE_KEY);
-  if (raw) {
-    try {
+  if(raw){
+    try{
       const obj = JSON.parse(raw);
-      character = Object.assign(character, obj);
-    } catch(e) {
-      console.warn("Chyba při načítání localStorage:", e);
+      character = Object.assign(character,obj);
+    }catch(e){
+      console.warn("Chyba při načítání localStorage:",e);
     }
   }
   renderAll();
 }
 
 /* ---------- Rendering ---------- */
-function renderAll() {
+function renderAll(){
   // header
   document.getElementById("character-name").value = character.name || "";
   document.getElementById("character-race").value = character.race || "";
@@ -93,183 +122,209 @@ function renderAll() {
   document.getElementById("personality-trait").value = character.extras.personality || "";
 
   // stats
-  ["body","soul","influence"].forEach(stat => {
+  ["body","soul","influence"].forEach(stat=>{
     const maxInput = document.getElementById(stat + "-max");
     maxInput.value = character.stats[stat].max || 0;
     renderStatBoxes(stat);
   });
 
   // items
-  clearContainer("skills-list"); character.skills.forEach(s => createSkillRow(s.name,s.source,s.desc));
-  clearContainer("weapons-list"); character.weapons.forEach(w => createWeaponRow(w.name,w.price,w.desc));
-  clearContainer("equipment-list"); character.equipment.forEach(g => createEquipmentRow(g.name,g.price,g.desc));
+  clearContainer("skills-list"); character.skills.forEach(s=>createSkillRow(s.name,s.source,s.desc));
+  clearContainer("weapons-list"); character.weapons.forEach(w=>createWeaponRow(w.name,w.price,w.desc));
+  clearContainer("equipment-list"); character.equipment.forEach(g=>createEquipmentRow(g.name,g.price,g.desc));
+
+  // helper
+  renderHelper();
+
+  // collapsibles
+  document.querySelectorAll(".collapsible").forEach(btn=>{
+    const content = btn.nextElementSibling;
+    const saved = character.collapsibles[btn.textContent];
+    if(saved) content.classList.add("active");
+    else content.classList.remove("active");
+  });
 }
 
 /* ---------- Stat boxes 3-stavové ---------- */
-function renderStatBoxes(stat) {
+function renderStatBoxes(stat){
   const container = document.getElementById(stat + "-boxes");
   const max = parseInt(document.getElementById(stat + "-max").value) || 0;
   const savedStates = character.stats[stat].states || [];
-  container.innerHTML = "";
+  container.innerHTML="";
 
-  for (let i = 0; i < max; i++) {
+  for(let i=0;i<max;i++){
     const b = document.createElement("div");
-    b.className = "box";
-    const state = savedStates[i] ?? 0; // 0=free,1=used,2=scar
+    b.className="box";
+    const state = savedStates[i] ?? 0;
     b.dataset.state = state;
-    updateBoxVisual(b, state);
+    updateBoxVisual(b,state);
 
-    b.addEventListener("click", () => {
-      let newState = (parseInt(b.dataset.state) + 1) % 3;
-      b.dataset.state = newState;
-      updateBoxVisual(b, newState);
+    b.addEventListener("click",()=>{
+      let newState = (parseInt(b.dataset.state)+1)%3;
+      b.dataset.state=newState;
+      updateBoxVisual(b,newState);
       saveAll();
     });
-
     container.appendChild(b);
   }
 }
 
-function updateBoxVisual(box, state) {
+function updateBoxVisual(box,state){
   box.classList.remove("active","injured");
-  if(state === 1) box.classList.add("active");
-  if(state === 2) box.classList.add("injured");
+  if(state===1) box.classList.add("active");
+  if(state===2) box.classList.add("injured");
+}
+
+/* ---------- Helper bond boxes ---------- */
+function renderHelper(){
+  document.getElementById("helper-name").value = character.helper.name || "";
+  document.getElementById("helper-description").value = character.helper.description || "";
+  document.getElementById("helper-boundary").value = character.helper.boundary || "";
+  document.getElementById("helper-payment").value = character.helper.payment || "";
+  document.getElementById("helper-abilities").value = character.helper.abilities || "";
+
+  const maxInput = document.getElementById("helper-bond-max");
+  maxInput.value = character.helper.bond.max || 0;
+  renderHelperBondBoxes();
+}
+
+function renderHelperBondBoxes(){
+  const container = document.getElementById("helper-bond-boxes");
+  const max = parseInt(document.getElementById("helper-bond-max").value) || 0;
+  const savedStates = character.helper.bond.states || [];
+  container.innerHTML="";
+
+  for(let i=0;i<max;i++){
+    const b=document.createElement("div");
+    b.className="box";
+    const state = savedStates[i] ?? 0;
+    b.dataset.state=state;
+    updateBoxVisual(b,state);
+
+    b.addEventListener("click",()=>{
+      let newState = (parseInt(b.dataset.state)+1)%3;
+      b.dataset.state=newState;
+      updateBoxVisual(b,newState);
+      saveAll();
+    });
+    container.appendChild(b);
+  }
 }
 
 /* ---------- Item rows helpers ---------- */
-function clearContainer(id) { document.getElementById(id).innerHTML = ""; }
+function clearContainer(id){ document.getElementById(id).innerHTML=""; }
 
-function readItemRows(containerId, fieldNames) {
-  const res = [];
-  const container = document.getElementById(containerId);
-  for (let r of container.children) {
-    const inputs = r.querySelectorAll("input, textarea");
-    if (!inputs.length) continue;
-    const obj = {};
-    fieldNames.forEach((f,i)=> obj[f] = (inputs[i] && inputs[i].value) ? inputs[i].value : "");
+function readItemRows(containerId,fieldNames){
+  const res=[];
+  const container=document.getElementById(containerId);
+  for(let r of container.children){
+    const inputs = r.querySelectorAll("input,textarea");
+    if(!inputs.length) continue;
+    const obj={};
+    fieldNames.forEach((f,i)=> obj[f]=(inputs[i] && inputs[i].value)?inputs[i].value:"");
     res.push(obj);
   }
   return res;
 }
 
 /* ---------- Create dynamic rows ---------- */
-function createSkillRow(name="", source="", desc="") {
-  const div = document.createElement("div");
-  div.className = "skill-row";
+function createSkillRow(name="", source="", desc=""){
+  const div=document.createElement("div");
+  div.className="skill-row";
 
-  const nameInput = document.createElement("input");
-  nameInput.className = "name";
-  nameInput.placeholder = "Název (max 50)";
-  nameInput.maxLength = 50;
-  nameInput.value = name;
+  const nameInput=document.createElement("input");
+  nameInput.className="name"; nameInput.placeholder="Název (max 50)"; nameInput.maxLength=50; nameInput.value=name;
 
-  const srcInput = document.createElement("input");
-  srcInput.className = "small";
-  srcInput.placeholder = "Zdroj";
-  srcInput.maxLength = 50;
-  srcInput.value = source;
+  const srcInput=document.createElement("input");
+  srcInput.className="small"; srcInput.placeholder="Zdroj"; srcInput.maxLength=50; srcInput.value=source;
 
-  const descInput = document.createElement("textarea");
-  descInput.placeholder = "Popis";
-  descInput.value = desc;
+  const descInput=document.createElement("textarea");
+  descInput.placeholder="Popis"; descInput.value=desc;
 
-  const delBtn = document.createElement("button");
-  delBtn.className = "delete-btn";
-  delBtn.textContent = "✖";
-  delBtn.addEventListener("click", ()=>{ div.remove(); saveAll(); });
+  const delBtn=document.createElement("button");
+  delBtn.className="delete-btn"; delBtn.textContent="✖";
+  delBtn.addEventListener("click",()=>{ div.remove(); saveAll(); });
 
-  [nameInput, srcInput, descInput].forEach(el=> el.addEventListener("input", saveAll));
+  [nameInput, srcInput, descInput].forEach(el=>el.addEventListener("input", saveAll));
 
   div.append(nameInput, srcInput, descInput, delBtn);
   document.getElementById("skills-list").appendChild(div);
 }
 
-function createWeaponRow(name="", price="", desc="") {
-  const div = document.createElement("div");
-  div.className = "weapon-row";
+function createWeaponRow(name="", price="", desc=""){
+  const div=document.createElement("div");
+  div.className="weapon-row";
 
-  const nameInput = document.createElement("input");
-  nameInput.className = "name";
-  nameInput.placeholder = "Název";
-  nameInput.value = name;
+  const nameInput=document.createElement("input");
+  nameInput.className="name"; nameInput.placeholder="Název"; nameInput.value=name;
 
-  const priceInput = document.createElement("input");
-  priceInput.className = "small";
-  priceInput.placeholder = "Cena";
-  priceInput.value = price;
+  const priceInput=document.createElement("input");
+  priceInput.className="small"; priceInput.placeholder="Cena"; priceInput.value=price;
 
-  const descInput = document.createElement("textarea");
-  descInput.placeholder = "Popis";
-  descInput.value = desc;
+  const descInput=document.createElement("textarea");
+  descInput.placeholder="Popis"; descInput.value=desc;
 
-  const delBtn = document.createElement("button");
-  delBtn.className = "delete-btn";
-  delBtn.textContent = "✖";
-  delBtn.addEventListener("click", ()=>{ div.remove(); saveAll(); });
+  const delBtn=document.createElement("button");
+  delBtn.className="delete-btn"; delBtn.textContent="✖";
+  delBtn.addEventListener("click",()=>{ div.remove(); saveAll(); });
 
-  [nameInput, priceInput, descInput].forEach(el=> el.addEventListener("input", saveAll));
+  [nameInput, priceInput, descInput].forEach(el=>el.addEventListener("input", saveAll));
 
   div.append(nameInput, priceInput, descInput, delBtn);
   document.getElementById("weapons-list").appendChild(div);
 }
 
-function createEquipmentRow(name="", price="", desc="") {
-  const div = document.createElement("div");
-  div.className = "equipment-row";
+function createEquipmentRow(name="", price="", desc=""){
+  const div=document.createElement("div");
+  div.className="equipment-row";
 
-  const nameInput = document.createElement("input");
-  nameInput.className = "name";
-  nameInput.placeholder = "Název";
-  nameInput.value = name;
+  const nameInput=document.createElement("input");
+  nameInput.className="name"; nameInput.placeholder="Název"; nameInput.value=name;
 
-  const priceInput = document.createElement("input");
-  priceInput.className = "small";
-  priceInput.placeholder = "Cena";
-  priceInput.value = price;
+  const priceInput=document.createElement("input");
+  priceInput.className="small"; priceInput.placeholder="Cena"; priceInput.value=price;
 
-  const descInput = document.createElement("textarea");
-  descInput.placeholder = "Popis";
-  descInput.value = desc;
+  const descInput=document.createElement("textarea");
+  descInput.placeholder="Popis"; descInput.value=desc;
 
-  const delBtn = document.createElement("button");
-  delBtn.className = "delete-btn";
-  delBtn.textContent = "✖";
-  delBtn.addEventListener("click", ()=>{ div.remove(); saveAll(); });
+  const delBtn=document.createElement("button");
+  delBtn.className="delete-btn"; delBtn.textContent="✖";
+  delBtn.addEventListener("click",()=>{ div.remove(); saveAll(); });
 
-  [nameInput, priceInput, descInput].forEach(el=> el.addEventListener("input", saveAll));
+  [nameInput, priceInput, descInput].forEach(el=>el.addEventListener("input", saveAll));
 
   div.append(nameInput, priceInput, descInput, delBtn);
   document.getElementById("equipment-list").appendChild(div);
 }
 
 /* ---------- Buttons and wiring ---------- */
-document.getElementById("add-skill").addEventListener("click", ()=>{ createSkillRow(); saveAll(); });
-document.getElementById("add-weapon").addEventListener("click", ()=>{ createWeaponRow(); saveAll(); });
-document.getElementById("add-equipment").addEventListener("click", ()=>{ createEquipmentRow(); saveAll(); });
+document.getElementById("add-skill").addEventListener("click",()=>{ createSkillRow(); saveAll(); });
+document.getElementById("add-weapon").addEventListener("click",()=>{ createWeaponRow(); saveAll(); });
+document.getElementById("add-equipment").addEventListener("click",()=>{ createEquipmentRow(); saveAll(); });
 
-document.getElementById("save-btn").addEventListener("click", ()=>{ saveAll(); alert("Deník uložen do localStorage ✅"); });
+document.getElementById("save-btn").addEventListener("click",()=>{ saveAll(); alert("Deník uložen do localStorage ✅"); });
 
-document.getElementById("export-btn").addEventListener("click", ()=>{
+document.getElementById("export-btn").addEventListener("click",()=>{
   saveAll();
-  const blob = new Blob([JSON.stringify(character,null,2)], {type:"application/json"});
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = (character.name? character.name.replace(/\s+/g,'_'):"denik")+".json";
+  const blob=new Blob([JSON.stringify(character,null,2)],{type:"application/json"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download=(character.name?character.name.replace(/\s+/g,'_'):"denik")+".json";
   a.click();
 });
 
-document.getElementById("import-file").addEventListener("change", (e)=>{
-  const f = e.target.files[0];
+document.getElementById("import-file").addEventListener("change",(e)=>{
+  const f=e.target.files[0];
   if(!f) return;
-  const r = new FileReader();
-  r.onload = ()=>{
-    try {
-      const data = JSON.parse(r.result);
-      character = Object.assign(character,data);
+  const r=new FileReader();
+  r.onload=()=>{
+    try{
+      const data=JSON.parse(r.result);
+      character=Object.assign(character,data);
       renderAll();
       saveAll();
       alert("Import dokončen ✅");
-    } catch(err) {
+    }catch(err){
       alert("Chyba při importu: špatný formát JSON");
       console.error(err);
     }
@@ -280,38 +335,29 @@ document.getElementById("import-file").addEventListener("change", (e)=>{
 /* persist inputs */
 ["character-name","character-race","money-gros","money-hal","xp-total","xp-free",
  "origin-story","adventures","racial-ability","personality-trait",
- "body-max","soul-max","influence-max"].forEach(id=>{
-   const el = document.getElementById(id);
+ "body-max","soul-max","influence-max",
+ "helper-name","helper-description","helper-boundary","helper-payment","helper-abilities",
+ "helper-bond-max"].forEach(id=>{
+   const el=document.getElementById(id);
    if(!el) return;
-   el.addEventListener("input", ()=>{
-     if(id.endsWith("-max")) renderStatBoxes(id.replace("-max",""));
+   el.addEventListener("input",()=>{
+     if(id==="body-max"||id==="soul-max"||id==="influence-max") renderStatBoxes(id.replace("-max",""));
+     if(id==="helper-bond-max") renderHelperBondBoxes();
      saveAll();
    });
 });
 
-/* ---------- Collapsibles with persistence ---------- */
-document.querySelectorAll(".collapsible").forEach((btn, idx) => {
-  const content = btn.nextElementSibling;
-  const key = "section_collapsed_" + idx;
-
-  // načíst uložený stav
-  const collapsed = localStorage.getItem(key);
-  if (collapsed === "true") {
-    content.classList.remove("active"); // collapsed
-  } else {
-    content.classList.add("active"); // expanded
-  }
-
-  // kliknutí
-  btn.addEventListener("click", () => {
+/* collapsibles */
+document.querySelectorAll(".collapsible").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const content=btn.nextElementSibling;
     content.classList.toggle("active");
-    localStorage.setItem(key, !content.classList.contains("active"));
+    saveAll();
   });
 });
 
-
 /* initial empty rows */
-window.addEventListener("DOMContentLoaded", ()=>{
+window.addEventListener("DOMContentLoaded",()=>{
   loadAll();
   if(!character.skills.length) createSkillRow();
   if(!character.weapons.length) createWeaponRow();

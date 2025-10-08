@@ -37,20 +37,19 @@ flex: 1 1 420px;
 min-width: 280px;
 }
 
-/* each stat line: name+max input on one row, boxes below */
+/* Zajistí, aby labely zůstaly vlevo a boxy vpravo */
 .stat-line {
-background: rgba(240,230,205,0.6);
-border: 1px solid #e0d0ad;
-padding: 8px;
-border-radius: 8px;
-margin-bottom: 8px;
+  background: rgba(240,230,205,0.6);
+  border: 1px solid #e0d0ad;
+  border-radius: 8px;
+  padding: 8px;
 }
 
 .stat-name {
-font-weight: bold;
-display: inline-flex;
-align-items: center;
-gap: 8px;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* small input for max, aligned with stat name */
@@ -320,3 +319,117 @@ table .delete-btn {
   background: #b0b0b0; /* světle šedá */
   border-color: #7a7a7a;
 }
+
+/* Helper section top row */
+.helper-top {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.helper-top input {
+  flex: 1 1 200px;
+}
+
+/* jednolinkové vstupy */
+.helper-single-row {
+  display: flex;
+  gap: 12px;
+  margin: 6px 0;
+}
+
+.helper-single-row input {
+  flex: 1 1 45%;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #c8b798;
+  background: #fff8f0;
+  box-sizing: border-box;
+}
+
+/* Pouto boxy */
+#helper-bond-boxes .box {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #7b674a;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+#helper-bond-boxes .box.active {
+  background: #d8c19c;
+  border-color: #b58f58;
+}
+
+#helper-bond-boxes .box.injured {
+  background: #a8a8a8;
+  border-color: #7b7b7b;
+}
+
+/* Helper top row: name + bond */
+.helper-top-row { display: flex; gap: 10px; margin-bottom: 10px; }
+.helper-top-row .half { flex: 1; display: flex; flex-direction: column; }
+.helper-top-row .stat-line { border: 1px solid #ccc; padding: 10px; border-radius: 5px; background:#f9f9f9; }
+
+
+.helper-top-row label {
+  flex: 1 1 50%;      /* každé label zabírá max. 50% */
+  display: flex;
+  flex-direction: column; /* label nahoře, input pod ním */
+}
+
+/* případně přidat, aby inputy byly full-width */
+.helper-top-row input[type="text"],
+.helper-top-row input[type="number"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* Bond boxes container */
+#helper-bond-boxes {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+  padding: 6px;
+  border: 1px solid #bfa98a;   /* jemný rámeček */
+  border-radius: 6px;
+  background: rgba(240, 230, 205, 0.3); /* světlé pozadí */
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* jednotlivé boxy pro pouto */
+#helper-bond-boxes .box {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #7b674a;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+#helper-bond-boxes .box.active {
+  background: #d8c19c;
+  border-color: #b58f58;
+}
+
+#helper-bond-boxes .box.injured {
+  background: #999; /* šedá pro “jizvu” */
+  border-color: #666;
+}
+
+.top-info-input {
+  width: 100%;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #c8b798;
+  background: #fff8f0;
+  box-sizing: border-box;
+}
+
