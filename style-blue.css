@@ -88,7 +88,7 @@ h1 {
 }
 
 .box.active { background: #5da1e0; border-color: #2f6bb0; }
-.box.injured { background: #7a9fcf; border-color: #486b94; }
+.box.injured { background: #b0b0b0; border-color: #486b94; }
 
 /* ---------- Info panel ---------- */
 .info-panel {
