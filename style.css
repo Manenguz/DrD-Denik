@@ -378,13 +378,14 @@ table .delete-btn {
 .helper-top-row label {
   flex: 1 1 50%;      /* každé label zabírá max. 50% */
   display: flex;
-  flex-direction: column; /* label nahoře, input pod ním */
+  align-items: center;
+  gap: 6px;
 }
 
 /* případně přidat, aby inputy byly full-width */
 .helper-top-row input[type="text"],
 .helper-top-row input[type="number"] {
-  width: 100%;
+  width: 52px;
   box-sizing: border-box;
 }
 
@@ -432,4 +433,3 @@ table .delete-btn {
   background: #fff8f0;
   box-sizing: border-box;
 }
-
