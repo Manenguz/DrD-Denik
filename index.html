@@ -12,22 +12,25 @@
 </script>
 
   <title>Deník hrdiny</title>
-  <link rel="stylesheet" href="style.css" />
+  <link id="theme-link" rel="stylesheet" href="style.css">
 </head>
 <body>
 <!DOCTYPE html>
-
-<html lang="cs">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DrD2 – Deník postavy</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
 <body>
   <div class="sheet-container">
 
 <header class="header-top">
+  <!-- Přepínače tématu – mohou být kdekoliv ve stránce -->
+<div id="theme-switcher-wrapper">
+  <div id="theme-switcher">
+    <label for="theme-select">Vyber téma:</label>
+    <select id="theme-select">
+      <option value="style.css">Pergamen</option>
+      <option value="style-blue.css">Modré</option>
+      <!-- další témata lze přidat -->
+    </select>
+  </div>
+</div>
   <h1>📜 Deník hrdiny</h1>
 
   <!-- Horní řádek: vlevo statistiky, vpravo peníze + XP -->
@@ -189,6 +192,26 @@
   </div>
 
   <script src="app.js"></script>
+
+  <script>
+  const themeSelect = document.getElementById('theme-select');
+  const themeLink = document.getElementById('theme-link');
+
+  function setTheme(fileName) {
+    themeLink.href = fileName;
+    localStorage.setItem('theme', fileName);
+    themeSelect.value = fileName;
+  }
+
+  themeSelect.addEventListener('change', () => {
+    setTheme(themeSelect.value);
+  });
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('theme');
+    if(saved) setTheme(saved);
+  });
+  </script>
 
 </body>
 </html>

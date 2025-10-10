@@ -1,9 +1,9 @@
-/* ---------- Pergamenový styl a základní font ---------- */
+/* ---------- Pergamenový styl -> Modrá varianta ---------- */
 body {
-  background: #f4f1e4;
+  background: #e6f0fa;
   font-family: "Georgia", serif;
   font-size: 14px;
-  color: #2e2417;
+  color: #1b2a3a;
   padding: 18px;
   margin: 0;
   line-height: 1.4;
@@ -18,8 +18,8 @@ input, textarea, select, button {
 
 /* ---------- Sheet container ---------- */
 .sheet-container {
-  background: #fbf8ef;
-  border: 2px solid #c2ad8f;
+  background: #f0f6fc;
+  border: 2px solid #9bb4d1;
   border-radius: 10px;
   padding: 18px;
   max-width: 980px;
@@ -48,8 +48,8 @@ h1 {
 }
 
 .stat-line {
-  background: rgba(240,230,205,0.6);
-  border: 1px solid #e0d0ad;
+  background: rgba(210,225,245,0.6);
+  border: 1px solid #a3c1e1;
   border-radius: 8px;
   padding: 8px;
 }
@@ -65,8 +65,8 @@ h1 {
   width: 52px;
   padding: 4px;
   border-radius: 6px;
-  border: 1px solid #c8b798;
-  background: #fff8f0;
+  border: 1px solid #9bb4d1;
+  background: #e6f0fa;
   text-align: center;
   margin-left: 6px;
 }
@@ -81,14 +81,14 @@ h1 {
 .box {
   width: 18px;
   height: 18px;
-  border: 1px solid #7b674a;
+  border: 1px solid #4d6a8c;
   border-radius: 4px;
   background: #fff;
   cursor: pointer;
 }
 
-.box.active { background: #e57373; border-color: #b53939; }
-.box.injured { background: #b0b0b0; border-color: #7a7a7a; }
+.box.active { background: #5da1e0; border-color: #2f6bb0; }
+.box.injured { background: #7a9fcf; border-color: #486b94; }
 
 /* ---------- Info panel ---------- */
 .info-panel {
@@ -103,17 +103,17 @@ h1 {
   width: calc(50% - 8px);
   padding: 6px;
   border-radius: 6px;
-  border: 1px solid #c8b798;
-  background: #fff8f0;
+  border: 1px solid #9bb4d1;
+  background: #e6f0fa;
   margin-right: 6px;
 }
 
 /* ---------- Money / XP ---------- */
 .money-xp {
-  background: rgba(240,230,205,0.6);
+  background: rgba(210,225,245,0.6);
   padding: 8px;
   border-radius: 8px;
-  border: 1px solid #e0d0ad;
+  border: 1px solid #a3c1e1;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -137,21 +137,21 @@ h1 {
   width: 86px;
   padding: 4px;
   border-radius: 6px;
-  border: 1px solid #c8b798;
-  background: #fff8f0;
+  border: 1px solid #9bb4d1;
+  background: #e6f0fa;
   text-align: center;
 }
 
 /* ---------- Sections ---------- */
 .section {
   margin-top: 14px;
-  border-top: 1px solid #d1c1a3;
+  border-top: 1px solid #aac1e0;
   padding-top: 10px;
 }
 
 .collapsible {
-  background-color: #e9dcc2;
-  color: #2e2417;
+  background-color: #c6d8f0;
+  color: #1b2a3a;
   cursor: pointer;
   padding: 8px 10px;
   width: 100%;
@@ -169,22 +169,20 @@ h1 {
 
 .content.active { display: block; }
 
-/* ---------- Textareas ---------- */
 textarea {
   width: 100%;
-  background-color: #fff8f0;
-  border: 1px solid #c8b798;
+  background-color: #e6f0fa;
+  border: 1px solid #9bb4d1;
   border-radius: 6px;
   padding: 6px;
   resize: vertical;
 }
 
-/* ---------- Buttons ---------- */
 .add-btn {
   margin-top: 6px;
   padding: 6px 10px;
-  border: 1px solid #a89472;
-  background: #e6d7b9;
+  border: 1px solid #7fa4d6;
+  background: #a6c2e8;
   border-radius: 6px;
   cursor: pointer;
 }
@@ -200,15 +198,15 @@ textarea {
   gap: 8px;
   align-items: flex-start;
   margin-bottom: 8px;
-  background: rgba(255,255,255,0.6);
+  background: rgba(230,240,255,0.6);
   padding: 6px;
   border-radius: 6px;
-  border: 1px solid #e6d0a3;
+  border: 1px solid #a6c2e8;
 }
 
 .skill-row input, .weapon-row input, .equipment-row input, .class-row input {
-  background: #fff8f0;
-  border: 1px solid #c8b798;
+  background: #e6f0fa;
+  border: 1px solid #9bb4d1;
   border-radius: 6px;
   padding: 6px;
 }
@@ -233,7 +231,7 @@ textarea {
 }
 
 .delete-btn {
-  background: #d96b6b;
+  background: #4b88c7;
   border: none;
   color: white;
   padding: 6px 8px;
@@ -265,7 +263,7 @@ textarea {
   padding: 6px;
   border-radius: 6px;
   border: 1px solid #c8b798;
-  background: #fff8f0;
+  background: #e6f0fa;
   box-sizing: border-box;
 }
 
@@ -296,7 +294,7 @@ textarea {
 .helper-top-row .stat-line { border: 1px solid #ccc; padding: 10px; border-radius: 5px; }
 
 .top-info-input {
-  background: #fff8f0;
+  background: #e6f0fa;
   border: 1px solid #c8b798;
   border-radius: 6px;
   padding: 6px;
@@ -337,20 +335,20 @@ textarea {
   width: 18px;
   height: 18px;
   border: 1px solid #7b674a;
-  border-radius: 4px;
+ border-radius: 4px;
   background: #fff;
   cursor: pointer;
   box-sizing: border-box;
 }
 
 #helper-bond-boxes .box.active {
-  background: #d8c19c;
-  border-color: #b58f58;
+  background: #7fb4e6;
+  border-color: #5b8dc6;
 }
 
 #helper-bond-boxes .box.injured {
-  background: #999; /* šedá pro “jizvu” */
-  border-color: #666;
+  background: #7a9fcf;
+  border-color: #486b94;
 }
 
 /* ---------- Responsive ---------- */
@@ -368,12 +366,11 @@ textarea {
   margin: 12px 0;
 }
 
-/* ---------- Styl pro dropdown přepínač tématu ---------- */
 #theme-switcher {
   margin: 12px 0;
   padding: 6px 10px;
-  background: rgba(240, 230, 205, 0.6); /* světlé pergamenové pozadí */
-  border: 1px solid #e0d0ad;
+  background: rgba(210, 225, 245, 0.6); /* světlé pergamenové pozadí */
+  border: 1px solid #a3c1e1;
   border-radius: 6px;
   display: inline-flex;
   align-items: center;
@@ -392,8 +389,8 @@ textarea {
 #theme-select {
   padding: 4px 8px;
   border-radius: 6px;
-  border: 1px solid #c8b798;
-  background: #fff8f0;
+  border: 1px solid #a3c1e1;
+  background: #e6f0fa;
   font-family: inherit;
   font-size: inherit;
   cursor: pointer;
@@ -403,13 +400,13 @@ textarea {
 
 /* hover efekt */
 #theme-select:hover {
-  background: #f0e6d1;
-  border-color: #bfa98a;
+  background: #a3c1e1;
+  border-color: #7a9fcf;
 }
 
 /* focus efekt */
 #theme-select:focus {
   outline: none;
-  border-color: #a89472;
-  background: #fffbe5;
+  border-color: #a3c1e1;
+  background: #7a9fcf;
 }
