@@ -1,43 +1,52 @@
-/* Pergamenový styl, kompaktní layout */
+/* ---------- Pergamenový styl a základní font ---------- */
 body {
-background: #f4f1e4;
-font-family: "Georgia", serif;
-color: #2e2417;
-padding: 18px;
-margin: 0;
+  background: #f4f1e4;
+  font-family: "Georgia", serif;
+  font-size: 14px;
+  color: #2e2417;
+  padding: 18px;
+  margin: 0;
+  line-height: 1.4;
 }
 
+input, textarea, select, button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  box-sizing: border-box;
+}
+
+/* ---------- Sheet container ---------- */
 .sheet-container {
-background: #fbf8ef;
-border: 2px solid #c2ad8f;
-border-radius: 10px;
-padding: 18px;
-max-width: 980px;
-margin: 0 auto;
-box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  background: #fbf8ef;
+  border: 2px solid #c2ad8f;
+  border-radius: 10px;
+  padding: 18px;
+  max-width: 980px;
+  margin: 0 auto;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
 h1 {
-text-align: center;
-margin: 6px 0 14px 0;
+  text-align: center;
+  margin: 6px 0 14px 0;
 }
 
-/* Header grid: left stats, right info */
+/* ---------- Header grid ---------- */
 .header-grid {
-display: flex;
-gap: 18px;
-align-items: flex-start;
-justify-content: space-between;
-flex-wrap: wrap;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-/* left stats panel */
+/* ---------- Stats panel ---------- */
 .stats-panel {
-flex: 1 1 420px;
-min-width: 280px;
+  flex: 1 1 420px;
+  min-width: 280px;
 }
 
-/* Zajistí, aby labely zůstaly vlevo a boxy vpravo */
 .stat-line {
   background: rgba(240,230,205,0.6);
   border: 1px solid #e0d0ad;
@@ -52,274 +61,186 @@ min-width: 280px;
   gap: 8px;
 }
 
-/* small input for max, aligned with stat name */
 .stat-max-input {
-width: 52px;
-padding: 4px;
-border-radius: 6px;
-border: 1px solid #c8b798;
-background: #fff8f0;
-text-align: center;
-margin-left: 6px;
+  width: 52px;
+  padding: 4px;
+  border-radius: 6px;
+  border: 1px solid #c8b798;
+  background: #fff8f0;
+  text-align: center;
+  margin-left: 6px;
 }
 
-/* row of boxes (checkbox-like) */
 .boxes-row {
-margin-top: 8px;
-display: flex;
-gap: 6px;
-flex-wrap: wrap;
+  margin-top: 8px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
-/* box */
 .box {
-width: 18px;
-height: 18px;
-border: 1px solid #7b674a;
-border-radius: 4px;
-background: #fff;
-cursor: pointer;
-box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #7b674a;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
 }
 
-/* Vyčerpaný – červený */
-.box.active {
-  background: #e57373; /* světle červená */
-  border-color: #b53939;
-}
+.box.active { background: #e57373; border-color: #b53939; }
+.box.injured { background: #b0b0b0; border-color: #7a7a7a; }
 
-/* right info panel */
+/* ---------- Info panel ---------- */
 .info-panel {
-flex: 0 0 300px;
-min-width: 220px;
-display: flex;
-flex-direction: column;
-gap: 10px;
+  flex: 0 0 300px;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .top-info input {
-width: calc(50% - 8px);
-padding: 6px;
-border-radius: 6px;
-border: 1px solid #c8b798;
-background: #fff8f0;
-box-sizing: border-box;
-margin-right: 6px;
+  width: calc(50% - 8px);
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #c8b798;
+  background: #fff8f0;
+  margin-right: 6px;
 }
 
+/* ---------- Money / XP ---------- */
 .money-xp {
   background: rgba(240,230,205,0.6);
   padding: 8px;
   border-radius: 8px;
   border: 1px solid #e0d0ad;
-
   display: flex;
-  flex-direction: column; /* vertikální stack */
-  align-items: flex-end; /* zarovnání doprava */
+  flex-direction: column;
+  align-items: flex-end;
   gap: 6px;
 }
 
 .money-row, .xp-row {
   display: flex;
-  flex-direction: column; /* každý label nad sebou */
+  flex-direction: column;
   gap: 4px;
 }
 
 .money-row label, .xp-row label {
   display: flex;
-  justify-content: flex-end; /* label + input vpravo */
+  justify-content: flex-end;
   align-items: center;
   gap: 6px;
 }
 
 .money-row input, .xp-row input {
-width: 86px;
-padding: 4px;
-border-radius: 6px;
-border: 1px solid #c8b798;
-background: #fff8f0;
-text-align: center;
+  width: 86px;
+  padding: 4px;
+  border-radius: 6px;
+  border: 1px solid #c8b798;
+  background: #fff8f0;
+  text-align: center;
 }
 
-/* sections */
+/* ---------- Sections ---------- */
 .section {
-margin-top: 14px;
-border-top: 1px solid #d1c1a3;
-padding-top: 10px;
+  margin-top: 14px;
+  border-top: 1px solid #d1c1a3;
+  padding-top: 10px;
 }
 
 .collapsible {
-background-color: #e9dcc2;
-color: #2e2417;
-cursor: pointer;
-padding: 8px 10px;
-width: 100%;
-border: none;
-text-align: left;
-font-weight: bold;
-font-size: 15px;
-border-radius: 6px;
+  background-color: #e9dcc2;
+  color: #2e2417;
+  cursor: pointer;
+  padding: 8px 10px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 6px;
 }
 
 .content {
-padding: 10px 6px;
-display: none;
+  padding: 10px 6px;
+  display: none;
 }
 
-/* content visible when active */
-.content.active {
-display: block;
-}
+.content.active { display: block; }
 
-/* textareas and inputs inside content */
+/* ---------- Textareas ---------- */
 textarea {
-width: 100%;
-background-color: #fff8f0;
-border: 1px solid #c8b798;
-border-radius: 6px;
-padding: 6px;
-resize: vertical;
-font-family: inherit;
-box-sizing: border-box;
-margin-bottom: 8px;
+  width: 100%;
+  background-color: #fff8f0;
+  border: 1px solid #c8b798;
+  border-radius: 6px;
+  padding: 6px;
+  resize: vertical;
 }
 
+/* ---------- Buttons ---------- */
 .add-btn {
-margin-top: 6px;
-padding: 6px 10px;
-border: 1px solid #a89472;
-background: #e6d7b9;
-border-radius: 6px;
-cursor: pointer;
+  margin-top: 6px;
+  padding: 6px 10px;
+  border: 1px solid #a89472;
+  background: #e6d7b9;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-/* item rows (skills/weapons/equipment) */
+/* ---------- Items rows ---------- */
 .items-list {
-margin-top: 8px;
+  margin-top: 8px;
 }
 
-.skill-row, .weapon-row, .equipment-row {
-display: flex;
-flex-wrap: wrap;
-gap: 8px;
-align-items: flex-start;
-margin-bottom: 8px;
-background: rgba(255,255,255,0.6);
-padding: 6px;
-border-radius: 6px;
-border: 1px solid #e6d0a3;
-}
-
-.skill-row input, .weapon-row input, .equipment-row input {
-background: #fff8f0;
-border: 1px solid #c8b798;
-border-radius: 6px;
-padding: 6px;
-box-sizing: border-box;
-}
-
-.skill-row input.name, .weapon-row input.name, .equipment-row input.name {
-flex: 0 0 25%;
-min-width: 140px;
-}
-
-.skill-row input.small, .weapon-row input.small, .equipment-row input.small {
-flex: 0 0 20%;
-min-width: 90px;
-}
-
-.skill-row textarea, .weapon-row textarea, .equipment-row textarea {
-flex: 1 1 45%;
-min-width: 180px;
-padding: 6px;
-border-radius: 6px;
-border: 1px solid #c8b798;
-}
-
-/* delete button */
-.delete-btn {
-background: #d96b6b;
-border: none;
-color: white;
-padding: 6px 8px;
-border-radius: 6px;
-cursor: pointer;
-}
-
-/* import/export area */
-.import-export {
-display: flex;
-gap: 10px;
-align-items: center;
-justify-content: center;
-margin-top: 6px;
-}
-
-/* responsive adjustments */
-@media (max-width: 760px) {
-.header-grid { flex-direction: column; }
-.info-panel { min-width: unset; flex: 1 1 auto; }
-.stat-name { display:block; margin-bottom:6px; }
-.stat-line { padding: 6px; }
-}
-
-/* Upravíme vzhled řádků tabulek (dovednosti, zbraně, vybavení) */
-table td {
-  vertical-align: middle;
-  padding: 4px;
-}
-
-/* Řádek přidávání nových záznamů – zarovnání na jednu řádku */
-.add-row {
+.skill-row, .weapon-row, .equipment-row, .class-row {
   display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  background: rgba(255,255,255,0.6);
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #e6d0a3;
 }
 
-/* Každé pole má definovaný podíl šířky */
-.add-row input[name="name"],
-#new-skill-name, #new-weapon-name, #new-gear-name {
+.skill-row input, .weapon-row input, .equipment-row input, .class-row input {
+  background: #fff8f0;
+  border: 1px solid #c8b798;
+  border-radius: 6px;
+  padding: 6px;
+}
+
+.skill-row input.name, .weapon-row input.name, .equipment-row input.name, .class-row input.name {
+  flex: 0 0 25%;
+  min-width: 140px;
+}
+
+.skill-row input.small, .weapon-row input.small, .equipment-row input.small, .class-row input.level {
   flex: 0 0 20%;
+  min-width: 60px;
+  text-align: center;
 }
 
-.add-row input[name="cost"],
-#new-skill-cost, #new-weapon-cost, #new-gear-cost {
-  flex: 0 0 20%;
+.skill-row textarea, .weapon-row textarea, .equipment-row textarea, .class-row textarea {
+  flex: 1 1 45%;
+  min-width: 180px;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #c8b798;
 }
 
-.add-row input[name="desc"],
-#new-skill-desc, #new-weapon-desc, #new-gear-desc {
-  flex: 0 0 45%;
-}
-
-/* Tlačítko mazání nebo přidání – malá pevná šířka */
-.add-row button,
 .delete-btn {
-  flex: 0 0 5%;
-  min-width: 30px;
-  padding: 4px 6px;
-  background-color: #bfa98a;
+  background: #d96b6b;
   border: none;
-  border-radius: 4px;
+  color: white;
+  padding: 6px 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
-  box-sizing: border-box;
 }
-
-/* Zarovnání tlačítek na střed */
-.add-row button,
-table .delete-btn {
-  align-self: center;
-}
-
-
-/* Jizva – šedá */
-.box.injured {
-  background: #b0b0b0; /* světle šedá */
-  border-color: #7a7a7a;
-}
-
 /* Helper section top row */
 .helper-top {
   display: flex;
@@ -372,7 +293,14 @@ table .delete-btn {
 /* Helper top row: name + bond */
 .helper-top-row { display: flex; gap: 10px; margin-bottom: 10px; }
 .helper-top-row .half { flex: 1; display: flex; flex-direction: column; }
-.helper-top-row .stat-line { border: 1px solid #ccc; padding: 10px; border-radius: 5px; background:#f9f9f9; }
+.helper-top-row .stat-line { border: 1px solid #ccc; padding: 10px; border-radius: 5px; }
+
+.top-info-input {
+  background: #fff8f0;
+  border: 1px solid #c8b798;
+  border-radius: 6px;
+  padding: 6px;
+}
 
 
 .helper-top-row label {
@@ -425,54 +353,10 @@ table .delete-btn {
   border-color: #666;
 }
 
-.top-info-input {
-  width: 100%;
-  padding: 6px;
-  border-radius: 6px;
-  border: 1px solid #c8b798;
-  background: #fff8f0;
-  box-sizing: border-box;
-}/* ---------- Class rows: stejný styl jako zbraně ---------- */
-.class-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  margin-bottom: 6px;
-  padding: 6px 8px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background-color: #fdfdfd;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 0.95rem;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-}
-
-.class-row input.name,
-.class-row input.level {
-  padding: 4px 6px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 0.9rem;
-  background-color: #fff;
-}
-
-.class-row input.level {
-  width: 60px;
-  text-align: center;
-}
-
-.class-row .delete-btn {
-  background-color: #e74c3c;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  padding: 3px 8px;
-  font-size: 0.9rem;
-  transition: background-color 0.2s ease;
-}
-
-.class-row .delete-btn:hover {
-  background-color: #c0392b;
+/* ---------- Responsive ---------- */
+@media (max-width: 760px) {
+  .header-grid { flex-direction: column; }
+  .info-panel { min-width: unset; flex: 1 1 auto; }
+  .stat-name { display:block; margin-bottom:6px; }
+  .stat-line { padding: 6px; }
 }
