@@ -12,6 +12,7 @@ let character = {
     soul: { max: 6, states: [] },
     influence: { max: 6, states: [] }
   },
+  classes: [], // {name, level, desc}
   skills: [],      // {name, source, desc}
   weapons: [],     // {name, price, desc}
   equipment: [],   // {name, price, desc}
@@ -35,6 +36,7 @@ function saveAll() {
   character.race = document.getElementById("character-race").value || "";
   character.money.gros = parseInt(document.getElementById("money-gros").value) || 0;
   character.money.halir = parseInt(document.getElementById("money-hal").value) || 0;
+  character.classes = readItemRows("classes-list", ["name", "level"]);
   // normalize halirs -> gros
   character.money.gros += Math.floor(character.money.halir / 10);
   character.money.halir = character.money.halir % 10;
@@ -132,6 +134,10 @@ function renderAll(){
   clearContainer("skills-list"); character.skills.forEach(s=>createSkillRow(s.name,s.source,s.desc));
   clearContainer("weapons-list"); character.weapons.forEach(w=>createWeaponRow(w.name,w.price,w.desc));
   clearContainer("equipment-list"); character.equipment.forEach(g=>createEquipmentRow(g.name,g.price,g.desc));
+
+  // classes  
+  clearContainer("classes-list");
+  character.classes.forEach(c => createClassRow(c.name, c.level));
 
   // helper
   renderHelper();
@@ -274,6 +280,40 @@ function createWeaponRow(name="", price="", desc=""){
   document.getElementById("weapons-list").appendChild(div);
 }
 
+function createClassRow(name = "", level = "") {
+  const div = document.createElement("div");
+  div.className = "class-row";
+
+  const nameInput = document.createElement("input");
+  nameInput.className = "name";
+  nameInput.placeholder = "Název povolání";
+  nameInput.value = name;
+
+  const levelInput = document.createElement("input");
+  levelInput.className = "level";
+  levelInput.type = "number";
+  levelInput.min = "1";
+  levelInput.max = "5";
+  levelInput.placeholder = "Úroveň";
+  levelInput.value = level;
+
+  const delBtn = document.createElement("button");
+  delBtn.className = "delete-btn";
+  delBtn.textContent = "✖";
+  delBtn.addEventListener("click", () => {
+    div.remove();
+    saveAll();
+  });
+
+  // teď už jen name a level reagují na input
+  [nameInput, levelInput].forEach(el => el.addEventListener("input", saveAll));
+
+  div.append(nameInput, levelInput, delBtn);
+  document.getElementById("classes-list").appendChild(div);
+}
+
+
+
 function createEquipmentRow(name="", price="", desc=""){
   const div=document.createElement("div");
   div.className="equipment-row";
@@ -301,7 +341,10 @@ function createEquipmentRow(name="", price="", desc=""){
 document.getElementById("add-skill").addEventListener("click",()=>{ createSkillRow(); saveAll(); });
 document.getElementById("add-weapon").addEventListener("click",()=>{ createWeaponRow(); saveAll(); });
 document.getElementById("add-equipment").addEventListener("click",()=>{ createEquipmentRow(); saveAll(); });
-
+document.getElementById("add-class").addEventListener("click", () => {
+  createClassRow();
+  saveAll();
+});
 document.getElementById("save-btn").addEventListener("click",()=>{ saveAll(); alert("Deník uložen do localStorage ✅"); });
 
 document.getElementById("export-btn").addEventListener("click",()=>{
