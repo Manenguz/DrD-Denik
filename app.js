@@ -14,6 +14,7 @@ let character = {
   },
   classes: [], // {name, level, desc}
   skills: [],      // {name, source, desc}
+  spells: [],      // {name, source, desc}
   weapons: [],     // {name, price, desc}
   equipment: [],   // {name, price, desc}
   story: { origin: "", adventures: "" },
@@ -67,6 +68,7 @@ function saveAll() {
 
   // items
   character.skills = readItemRows("skills-list", ["name","source","desc"]);
+  character.spells = readItemRows("spells-list", ["name","source","desc"]);
   character.weapons = readItemRows("weapons-list", ["name","price","desc"]);
   character.equipment = readItemRows("equipment-list", ["name","price","desc"]);
 
@@ -132,6 +134,8 @@ function renderAll(){
 
   // items
   clearContainer("skills-list"); character.skills.forEach(s=>createSkillRow(s.name,s.source,s.desc));
+  clearContainer("spells-list"); character.spells.forEach(s=>createSpellRow(s.name,s.source,s.desc));
+
   clearContainer("weapons-list"); character.weapons.forEach(w=>createWeaponRow(w.name,w.price,w.desc));
   clearContainer("equipment-list"); character.equipment.forEach(g=>createEquipmentRow(g.name,g.price,g.desc));
 
@@ -257,6 +261,30 @@ function createSkillRow(name="", source="", desc=""){
   document.getElementById("skills-list").appendChild(div);
 }
 
+/* ---------- Create dynamic rows ---------- */
+function createSpellRow(name="", source="", desc=""){
+  const div=document.createElement("div");
+  div.className="spell-row";
+
+  const nameInput=document.createElement("input");
+  nameInput.className="name"; nameInput.placeholder="Název (max 50)"; nameInput.maxLength=50; nameInput.value=name;
+
+  const srcInput=document.createElement("input");
+  srcInput.className="small"; srcInput.placeholder="Zdroj"; srcInput.maxLength=50; srcInput.value=source;
+
+  const descInput=document.createElement("textarea");
+  descInput.placeholder="Popis"; descInput.value=desc;
+
+  const delBtn=document.createElement("button");
+  delBtn.className="delete-btn"; delBtn.textContent="✖";
+  delBtn.addEventListener("click",()=>{ div.remove(); saveAll(); });
+
+  [nameInput, srcInput, descInput].forEach(el=>el.addEventListener("input", saveAll));
+
+  div.append(nameInput, srcInput, descInput, delBtn);
+  document.getElementById("spells-list").appendChild(div);
+}
+
 function createWeaponRow(name="", price="", desc=""){
   const div=document.createElement("div");
   div.className="weapon-row";
@@ -339,6 +367,7 @@ function createEquipmentRow(name="", price="", desc=""){
 
 /* ---------- Buttons and wiring ---------- */
 document.getElementById("add-skill").addEventListener("click",()=>{ createSkillRow(); saveAll(); });
+document.getElementById("add-spell").addEventListener("click",()=>{ createSpellRow(); saveAll(); });
 document.getElementById("add-weapon").addEventListener("click",()=>{ createWeaponRow(); saveAll(); });
 document.getElementById("add-equipment").addEventListener("click",()=>{ createEquipmentRow(); saveAll(); });
 document.getElementById("add-class").addEventListener("click", () => {
@@ -403,6 +432,7 @@ document.querySelectorAll(".collapsible").forEach(btn=>{
 window.addEventListener("DOMContentLoaded",()=>{
   loadAll();
   if(!character.skills.length) createSkillRow();
+  if(!character.spells.length) createSpellRow();
   if(!character.weapons.length) createWeaponRow();
   if(!character.equipment.length) createEquipmentRow();
 });
