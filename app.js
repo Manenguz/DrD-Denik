@@ -416,6 +416,37 @@ document.getElementById("import-file").addEventListener("change",(e)=>{
   r.readAsText(f);
 });
 
+// --- Reset button ---
+document.getElementById("reset-btn").addEventListener("click", () => {
+    if (!confirm("Opravdu chcete vymazat všechny údaje a začít od začátku?")) return;
+
+    // reset data model
+    character = {
+        name: "",
+        race: "",
+        money: { gros: 0, halir: 0 },
+        xp: { total: 0, free: 0 },
+        stats: {
+            body: { max: 6, states: [] },
+            soul: { max: 6, states: [] },
+            influence: { max: 6, states: [] }
+        },
+        classes: [],
+        skills: [],
+        weapons: [],
+        equipment: [],
+        story: { origin: "", adventures: "" },
+        extras: { racial: "", personality: "" },
+        helper: { name: "", bond: { max: 6, states: [] }, description: "", boundary: "", payment: "", abilities: "" },
+        collapsibles: {}
+    };
+
+    // znovu vykreslit všechny vstupy
+    renderAll();
+    saveAll();
+});
+
+
 /* persist inputs */
 ["character-name","character-race","money-gros","money-hal","xp-total","xp-free",
  "origin-story","adventures","racial-ability","personality-trait",
