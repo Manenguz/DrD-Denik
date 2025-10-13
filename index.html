@@ -13,7 +13,12 @@
 
     <title>Deník hrdiny</title>
     <link rel="icon" type="image/png" href="favicon.png" />
-    <link id="theme-link" rel="stylesheet" href="style.css">
+
+    <!-- Základní styl (obsahuje veškeré rozložení a design bez barev) -->
+    <link rel="stylesheet" href="base.css">
+
+    <!-- Aktivní téma (pouze barvy a proměnné) -->
+    <link id="theme-link" rel="stylesheet" href="theme-parchment.css">
 </head>
 <body>
 <div class="sheet-container">
@@ -24,13 +29,13 @@
             <div id="theme-switcher">
                 <label for="theme-select">Vyber téma:</label>
                 <select id="theme-select">
-                    <option value="style.css">Pergamen</option>
-                    <option value="style-blue.css">Modré</option>
-                    <option value="style-dark.css">Tmavé</option>
-                    <!-- další témata lze přidat -->
+                    <option value="theme-parchment.css">Pergamen</option>
+                    <option value="theme-blue.css">Led</option>
+                    <option value="theme-dark.css">Kůže</option>
                 </select>
             </div>
         </div>
+
         <h1>🧙‍♂️ Deník hrdiny</h1>
 
         <!-- Horní řádek: vlevo statistiky, vpravo peníze + XP -->
@@ -212,15 +217,17 @@
         themeSelect.value = fileName;
     }
 
+    window.addEventListener('DOMContentLoaded', () => {
+        const saved = localStorage.getItem('theme');
+        if (saved) setTheme(saved);
+        else setTheme('theme-parchment.css'); // výchozí
+    });
+
     themeSelect.addEventListener('change', () => {
         setTheme(themeSelect.value);
     });
-
-    window.addEventListener('DOMContentLoaded', () => {
-        const saved = localStorage.getItem('theme');
-        if(saved) setTheme(saved);
-    });
 </script>
+
 
 <script src="app.js"></script>
 </body>

@@ -1,0 +1,24 @@
+:root {
+    --bg-main: #e8eef7;
+    --bg-container: #f3f7fb;
+    --text-color: #1c2833;
+    --border-color: #9cb5d1;
+    --input-bg: #f9fcff;
+    --input-border: #a8bfd9;
+    --box-border: #4f6a8d;
+    --box-active-bg: #4c8ed9;
+    --box-active-border: #2c6bb3;
+    --box-injured-bg: #b0b8c5;
+    --box-injured-border: #8c96a3;
+    --section-border: #a9bed8;
+    --collapsible-bg: #cdddf0;
+    --button-bg: #b7cdea;
+    --button-border: #90afd6;
+    --delete-btn-bg: #6b90d9;
+    --delete-btn-text: #ffffff;
+    --row-bg: rgba(255, 255, 255, 0.7);
+    --panel-bg: rgba(210, 225, 245, 0.6);
+    --shadow: rgba(30, 60, 90, 0.1);
+    --input-color: #1c2833;
+    --button-color: #1c2833;
+}
