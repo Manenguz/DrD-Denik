@@ -120,8 +120,7 @@ h1 {
     border: 1px solid #4d4336;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    gap: 6px;
+    gap: 6px; /* odstraníme align-items:flex-end, aby šlo zarovnat label/input */
 }
 
 .money-row, .xp-row {
@@ -132,21 +131,22 @@ h1 {
 
 .money-row label, .xp-row label {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between; /* popisek vlevo, input vpravo */
     align-items: center;
-    gap: 6px;
+    width: 100%;
     color: #f0e8cf;
 }
 
 .money-row input, .xp-row input {
-    width: 86px;
+    width: 80px;
     padding: 4px;
     border-radius: 6px;
     border: 1px solid #665a45;
     background: #3a342b;
-    text-align: center;
+    text-align: right;
     color: #f0eada;
 }
+
 
 /* ---------- Sections ---------- */
 .section {
