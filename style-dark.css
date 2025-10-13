@@ -1,92 +1,92 @@
 body {
-  background: #1c1a17;
-  font-family: "Georgia", serif;
-  font-size: 14px;
-  color: #e6e0d1;
-  padding: 18px;
-  margin: 0;
-  line-height: 1.4;
+    background: #1c1a17;
+    font-family: "Georgia", serif;
+    font-size: 14px;
+    color: #e6e0d1;
+    padding: 18px;
+    margin: 0;
+    line-height: 1.4;
 }
 
 input, textarea, select, button {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  box-sizing: border-box;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    box-sizing: border-box;
 }
 
 /* ---------- Sheet container ---------- */
 .sheet-container {
-  background: #2a2722;
-  border: 2px solid #5a4a36;
-  border-radius: 10px;
-  padding: 18px;
-  max-width: 980px;
-  margin: 0 auto;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    background: #2a2722;
+    border: 2px solid #5a4a36;
+    border-radius: 10px;
+    padding: 18px;
+    max-width: 980px;
+    margin: 0 auto;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.6);
 }
 
 h1 {
-  text-align: center;
-  margin: 6px 0 14px 0;
-  color: #f3e8c0;
+    text-align: center;
+    margin: 6px 0 14px 0;
+    color: #f3e8c0;
 }
 
 /* ---------- Header grid ---------- */
 .header-grid {
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 /* ---------- Stats panel ---------- */
 .stats-panel {
-  flex: 1 1 420px;
-  min-width: 280px;
+    flex: 1 1 420px;
+    min-width: 280px;
 }
 
 .stat-line {
-  background: rgba(70, 65, 55, 0.6);
-  border: 1px solid #4d4336;
-  border-radius: 8px;
-  padding: 8px;
+    background: rgba(70, 65, 55, 0.6);
+    border: 1px solid #4d4336;
+    border-radius: 8px;
+    padding: 8px;
 }
 
 .stat-name {
-  font-weight: bold;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #efe8d1;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #efe8d1;
 }
 
 .stat-max-input {
-  width: 52px;
-  padding: 4px;
-  border-radius: 6px;
-  border: 1px solid #665a45;
-  background: #3a342b;
-  text-align: center;
-  margin-left: 6px;
-  color: #f0eada;
+    width: 52px;
+    padding: 4px;
+    border-radius: 6px;
+    border: 1px solid #665a45;
+    background: #3a342b;
+    text-align: center;
+    margin-left: 6px;
+    color: #f0eada;
 }
 
 .boxes-row {
-  margin-top: 8px;
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
+    margin-top: 8px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
 }
 
 .box {
-  width: 18px;
-  height: 18px;
-  border: 1px solid #7b674a;
-  border-radius: 4px;
-  background: #2f2a23;
-  cursor: pointer;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #7b674a;
+    border-radius: 4px;
+    background: #2f2a23;
+    cursor: pointer;
 }
 
 .box.active { background: #b04a4a; border-color: #8b3939; }
@@ -94,212 +94,212 @@ h1 {
 
 /* ---------- Info panel ---------- */
 .info-panel {
-  flex: 0 0 300px;
-  min-width: 220px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    flex: 0 0 300px;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .top-info input {
-  width: calc(50% - 8px);
-  padding: 6px;
-  border-radius: 6px;
-  border: 1px solid #665a45;
-  background: #3a342b;
-  margin-right: 6px;
-  color: #f0eada;
+    width: calc(50% - 8px);
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #665a45;
+    background: #3a342b;
+    margin-right: 6px;
+    color: #f0eada;
 }
 
 /* ---------- Money / XP ---------- */
 .money-xp {
-  background: rgba(70, 65, 55, 0.6);
-  padding: 8px;
-  border-radius: 8px;
-  border: 1px solid #4d4336;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 6px;
+    background: rgba(70, 65, 55, 0.6);
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #4d4336;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
 }
 
 .money-row, .xp-row {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .money-row label, .xp-row label {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 6px;
-  color: #f0e8cf;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 6px;
+    color: #f0e8cf;
 }
 
 .money-row input, .xp-row input {
-  width: 86px;
-  padding: 4px;
-  border-radius: 6px;
-  border: 1px solid #665a45;
-  background: #3a342b;
-  text-align: center;
-  color: #f0eada;
+    width: 86px;
+    padding: 4px;
+    border-radius: 6px;
+    border: 1px solid #665a45;
+    background: #3a342b;
+    text-align: center;
+    color: #f0eada;
 }
 
 /* ---------- Sections ---------- */
 .section {
-  margin-top: 14px;
-  border-top: 1px solid #4d4336;
-  padding-top: 10px;
+    margin-top: 14px;
+    border-top: 1px solid #4d4336;
+    padding-top: 10px;
 }
 
 .collapsible {
-  background-color: #3a342b;
-  color: #f0e8cf;
-  cursor: pointer;
-  padding: 8px 10px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  font-weight: bold;
-  font-size: 15px;
-  border-radius: 6px;
+    background-color: #3a342b;
+    color: #f0e8cf;
+    cursor: pointer;
+    padding: 8px 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 6px;
 }
 
 .content {
-  padding: 10px 6px;
-  display: none;
+    padding: 10px 6px;
+    display: none;
 }
 
 .content.active { display: block; }
 
 /* ---------- Textareas ---------- */
 textarea {
-  width: 100%;
-  background-color: #3a342b;
-  border: 1px solid #665a45;
-  border-radius: 6px;
-  padding: 6px;
-  resize: vertical;
-  color: #f0eada;
+    width: 100%;
+    background-color: #3a342b;
+    border: 1px solid #665a45;
+    border-radius: 6px;
+    padding: 6px;
+    resize: vertical;
+    color: #f0eada;
 }
 
 /* ---------- Buttons ---------- */
 .add-btn {
-  margin-top: 6px;
-  padding: 6px 10px;
-  border: 1px solid #8d7a59;
-  background: #4a4235;
-  border-radius: 6px;
-  cursor: pointer;
-  color: #f0eada;
+    margin-top: 6px;
+    padding: 6px 10px;
+    border: 1px solid #8d7a59;
+    background: #4a4235;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #f0eada;
 }
 
 .add-btn:hover {
-  background: #5a4f3e;
+    background: #5a4f3e;
 }
 
 /* ---------- Items rows ---------- */
 .items-list {
-  margin-top: 8px;
+    margin-top: 8px;
 }
 
 .skill-row, .weapon-row, .equipment-row, .class-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: flex-start;
-  margin-bottom: 8px;
-  background: rgba(50, 45, 40, 0.6);
-  padding: 6px;
-  border-radius: 6px;
-  border: 1px solid #4d4336;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    background: rgba(50, 45, 40, 0.6);
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #4d4336;
 }
 
 .skill-row input, .weapon-row input, .equipment-row input, .class-row input {
-  background: #3a342b;
-  border: 1px solid #665a45;
-  border-radius: 6px;
-  padding: 6px;
-  color: #f0eada;
+    background: #3a342b;
+    border: 1px solid #665a45;
+    border-radius: 6px;
+    padding: 6px;
+    color: #f0eada;
 }
 
 .skill-row textarea, .weapon-row textarea, .equipment-row textarea, .class-row textarea {
-  flex: 1 1 45%;
-  min-width: 180px;
-  padding: 6px;
-  border-radius: 6px;
-  border: 1px solid #665a45;
-  background: #3a342b;
-  color: #f0eada;
+    flex: 1 1 45%;
+    min-width: 180px;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #665a45;
+    background: #3a342b;
+    color: #f0eada;
 }
 
 .delete-btn {
-  background: #b04a4a;
-  border: none;
-  color: white;
-  padding: 6px 8px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
+    background: #b04a4a;
+    border: none;
+    color: white;
+    padding: 6px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .delete-btn:hover {
-  background: #c65a5a;
+    background: #c65a5a;
 }
 
 /* Helper section top row */
 .helper-top {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  align-items: flex-start;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: flex-start;
 }
 
 .helper-top input {
-  flex: 1 1 200px;
-  color: #f0eada;
-  background: #3a342b;
-  border: 1px solid #665a45;
+    flex: 1 1 200px;
+    color: #f0eada;
+    background: #3a342b;
+    border: 1px solid #665a45;
 }
 
 /* jednolinkové vstupy */
 .helper-single-row {
-  display: flex;
-  gap: 12px;
-  margin: 6px 0;
+    display: flex;
+    gap: 12px;
+    margin: 6px 0;
 }
 
 .helper-single-row input {
-  flex: 1 1 45%;
-  padding: 6px;
-  border-radius: 6px;
-  border: 1px solid #665a45;
-  background: #3a342b;
-  color: #f0eada;
-  box-sizing: border-box;
+    flex: 1 1 45%;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #665a45;
+    background: #3a342b;
+    color: #f0eada;
+    box-sizing: border-box;
 }
 
 /* Pouto boxy */
 #helper-bond-boxes .box {
-  width: 18px;
-  height: 18px;
-  border: 1px solid #7b674a;
-  border-radius: 4px;
-  background: #2f2a23;
-  cursor: pointer;
-  box-sizing: border-box;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #7b674a;
+    border-radius: 4px;
+    background: #2f2a23;
+    cursor: pointer;
+    box-sizing: border-box;
 }
 
 #helper-bond-boxes .box.active {
-  background: #a38b60;
-  border-color: #7f6543;
+    background: #a38b60;
+    border-color: #7f6543;
 }
 
 #helper-bond-boxes .box.injured {
-  background: #555;
-  border-color: #333;
+    background: #555;
+    border-color: #333;
 }
 
 /* Helper top row: name + bond */
@@ -308,208 +308,208 @@ textarea {
 .helper-top-row .stat-line { border: 1px solid #4d4336; padding: 10px; border-radius: 5px; }
 
 .top-info-input {
-  background: #3a342b;
-  border: 1px solid #665a45;
-  border-radius: 6px;
-  padding: 6px;
-  color: #f0eada;
+    background: #3a342b;
+    border: 1px solid #665a45;
+    border-radius: 6px;
+    padding: 6px;
+    color: #f0eada;
 }
 
 
 .helper-top-row label {
-  flex: 1 1 50%;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: #f0e8cf;
+    flex: 1 1 50%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #f0e8cf;
 }
 
 /* případně přidat, aby inputy byly full-width */
 .helper-top-row input[type="text"],
 .helper-top-row input[type="number"] {
-  width: 52px;
-  box-sizing: border-box;
-  background: #3a342b;
-  border: 1px solid #665a45;
-  color: #f0eada;
+    width: 52px;
+    box-sizing: border-box;
+    background: #3a342b;
+    border: 1px solid #665a45;
+    color: #f0eada;
 }
 
 
 /* Bond boxes container */
 #helper-bond-boxes {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-top: 6px;
-  padding: 6px;
-  border: 1px solid #5a4a36;
-  border-radius: 6px;
-  background: rgba(50, 45, 40, 0.6);
-  max-width: 100%;
-  box-sizing: border-box;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+    padding: 6px;
+    border: 1px solid #5a4a36;
+    border-radius: 6px;
+    background: rgba(50, 45, 40, 0.6);
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 /* jednotlivé boxy pro pouto */
 #helper-bond-boxes .box {
-  width: 18px;
-  height: 18px;
-  border: 1px solid #7b674a;
-  border-radius: 4px;
-  background: #2f2a23;
-  cursor: pointer;
-  box-sizing: border-box;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #7b674a;
+    border-radius: 4px;
+    background: #2f2a23;
+    cursor: pointer;
+    box-sizing: border-box;
 }
 
 #helper-bond-boxes .box.active {
-  background: #a38b60;
-  border-color: #7f6543;
+    background: #a38b60;
+    border-color: #7f6543;
 }
 
 #helper-bond-boxes .box.injured {
-  background: #555;
-  border-color: #333;
+    background: #555;
+    border-color: #333;
 }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 760px) {
-  .header-grid { flex-direction: column; }
-  .info-panel { min-width: unset; flex: 1 1 auto; }
-  .stat-name { display:block; margin-bottom:6px; }
-  .stat-line { padding: 6px; }
+    .header-grid { flex-direction: column; }
+    .info-panel { min-width: unset; flex: 1 1 auto; }
+    .stat-name { display:block; margin-bottom:6px; }
+    .stat-line { padding: 6px; }
 }
 /* ---------- Styl pro dropdown přepínač tématu ---------- */
 /* Wrapper pro zarovnání doprava */
 #theme-switcher-wrapper {
-  display: flex;
-  justify-content: flex-end;
-  margin: 12px 0;
+    display: flex;
+    justify-content: flex-end;
+    margin: 12px 0;
 }
 
 /* ---------- Styl pro dropdown přepínač tématu ---------- */
 #theme-switcher {
-  margin: 12px 0;
-  padding: 6px 10px;
-  background: rgba(50, 45, 40, 0.6);
-  border: 1px solid #5a4a36;
-  border-radius: 6px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: inherit;
-  font-size: 14px;
-  color: #f0e8cf;
+    margin: 12px 0;
+    padding: 6px 10px;
+    background: rgba(50, 45, 40, 0.6);
+    border: 1px solid #5a4a36;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #f0e8cf;
 }
 
 /* label uvnitř */
 #theme-switcher label {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 /* samotný select */
 #theme-select {
-  padding: 4px 8px;
-  border-radius: 6px;
-  border: 1px solid #665a45;
-  background: #3a342b;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: pointer;
-  color: #f0eada;
-  transition: background 0.2s ease, border-color 0.2s ease;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid #665a45;
+    background: #3a342b;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    color: #f0eada;
+    transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 /* hover efekt */
 #theme-select:hover {
-  background: #4a4235;
-  border-color: #8d7a59;
+    background: #4a4235;
+    border-color: #8d7a59;
 }
 
 /* focus efekt */
 #theme-select:focus {
-  outline: none;
-  border-color: #a89472;
-  background: #4a4235;
+    outline: none;
+    border-color: #a89472;
+    background: #4a4235;
 }
 
 /* === Kouzla a rituály (tmavý styl) === */
 
 #spells-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
 }
 
 .spell-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 8px;
-  background: rgba(40, 40, 45, 0.85);
-  border: 1px solid #444;
-  border-radius: 8px;
-  padding: 8px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    background: rgba(50, 45, 40, 0.6);
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #4d4336;
 }
 
 .spell-row input,
 .spell-row textarea {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 14px;
-  background: #2c2c2f;
-  border: 1px solid #555;
-  border-radius: 6px;
-  padding: 4px 6px;
-  color: #e0e0e0;
-  box-sizing: border-box;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 14px;
+    border-radius: 6px;
+    padding: 4px 6px;
+    box-sizing: border-box;
+    border: 1px solid #665a45;
+    background: #3a342b;
+    color: #f0eada;
 }
 
 .spell-row input.name {
-  flex: 1 1 25%;
-  min-width: 140px;
+    flex: 1 1 25%;
+    min-width: 140px;
 }
 
 .spell-row input.source {
-  flex: 1 1 20%;
-  min-width: 100px;
-  text-align: center;
+    flex: 1 1 20%;
+    min-width: 100px;
+    text-align: center;
 }
 
 .spell-row textarea {
-  flex: 1 1 45%;
-  min-width: 180px;
-  height: 60px;
-  resize: vertical;
+    flex: 1 1 45%;
+    min-width: 180px;
+    height: 60px;
+    resize: vertical;
 }
 
 .spell-row .delete-btn {
-  background: #883333;
-  border: none;
-  color: #f5f5f5;
-  padding: 6px 8px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
+    background: #883333;
+    border: none;
+    color: #f5f5f5;
+    padding: 6px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .spell-row .delete-btn:hover {
-  background: #aa4444;
+    background: #aa4444;
 }
 
 #add-spell {
-  background: #333;
-  border: 1px solid #555;
-  border-radius: 6px;
-  color: #e0e0e0;
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 14px;
-  padding: 4px 10px;
-  margin-top: 6px;
-  cursor: pointer;
-  transition: background 0.2s ease;
+    background: #4a4235;
+    border: 1px solid #8d7a59;
+    border-radius: 6px;
+    color: #f0eada;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 14px;
+    padding: 4px 10px;
+    margin-top: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
 }
 
 #add-spell:hover {
-  background: #444;
+    background: #444;
 }
 
