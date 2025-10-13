@@ -353,8 +353,6 @@ textarea {
     gap: 6px;
     flex-wrap: wrap;
     margin-top: 6px;
-    padding: 6px;
-    border: 1px solid #5a4a36;
     border-radius: 6px;
     background: rgba(50, 45, 40, 0.6);
     max-width: 100%;

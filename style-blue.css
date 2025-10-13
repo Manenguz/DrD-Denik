@@ -323,8 +323,6 @@ textarea {
     gap: 6px;
     flex-wrap: wrap;
     margin-top: 6px;
-    padding: 6px;
-    border: 1px solid #bfa98a;   /* jemný rámeček */
     border-radius: 6px;
     background: rgba(240, 230, 205, 0.3); /* světlé pozadí */
     max-width: 100%;
