@@ -1,0 +1,31 @@
+:root {
+    --bg-main: #0f1a0f;              /* temně zelené pozadí */
+    --bg-container: #1c2b1c;         /* o něco světlejší tmavě zelená */
+    --text-color: #dbe8d3;           /* světlý béžovo-zelený text */
+    --border-color: #2e462e;         /* tmavě zelený okraj */
+    --input-bg: #1a2a1a;             /* pozadí inputů – tmavá lesní zelená */
+    --input-border: #3a603a;         /* decentní kontrastní zelená hranice */
+    --box-background: #ffffff;
+    --box-border: #4a704a;           /* okraj boxů – přírodní zelená */
+    --box-active-bg: #5cb85c;        /* aktivní box – živá jarní zelená */
+    --box-active-border: #3e6f3e;    /* tmavší okraj aktivního boxu */
+    --box-injured-bg: #556655;       /* zraněný – tlumená šedozelená */
+    --box-injured-border: #889988;   /* kontrastnější okraj zraněného */
+    --section-border: #3a553a;       /* sekční linie */
+    --collapsible-bg: #1a2a1a;       /* skládací bloky – tmavá lesní */
+    --button-bg: #3e6f3e;            /* pozadí tlačítek */
+    --button-border: #5cb85c;        /* okraj tlačítek */
+    --delete-btn-bg: #a13c13;        /* „nebezpečné“ akcentní tlačítko, hnědočervené */
+    --delete-btn-text: #ffffff;      /* bílé písmo */
+    --row-bg: rgba(30, 50, 30, 0.6); /* tmavě zelený průhledný pruh */
+    --panel-bg: #1a2a1a;             /* panelový podklad */
+    --shadow: rgba(0, 0, 0, 0.5);    /* jemný stín */
+    --input-color: #dbe8d3;          /* text inputů */
+    --button-color: #dbe8d3;         /* text tlačítek */
+
+    /* --- pulsující animace pro zelené téma --- */
+    --pulse-color: rgba(92, 184, 92, 0.7);   /* barva pulsujícího boxu */
+    --pulse-color-light: rgba(92, 184, 92, 0.5); /* světlejší verze pro stín */
+    --pulse-duration-box: 1.5s;              /* délka animace pro box */
+    --pulse-duration-btn: 2s;                /* délka animace pro tlačítko */
+}

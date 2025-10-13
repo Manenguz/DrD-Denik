@@ -1,0 +1,31 @@
+:root {
+    --bg-main: #1a0e0e;              /* temně rudé pozadí */
+    --bg-container: #261212;         /* o něco světlejší rudohnědá */
+    --text-color: #f8d7d7;           /* světlý růžovo-béžový text */
+    --border-color: #5a1f1f;         /* tmavě vínový okraj */
+    --input-bg: #2b1515;             /* pozadí inputů - tlumená krevní barva */
+    --input-border: #7a2c2c;         /* hranice inputu, decentní kontrast */
+    --box-background: #ffffff;
+    --box-border: #8b2d2d;           /* krvavě červený okraj boxů */
+    --box-active-bg: #c23b3b;        /* aktivní box – živě rudý */
+    --box-active-border: #a22b2b;    /* o něco tmavší hranice */
+    --box-injured-bg: #555;
+    --box-injured-border: #888;
+    --section-border: #5c2a2a;       /* sekční linie */
+    --collapsible-bg: #2b1515;       /* skládací bloky – tmavá krevní */
+    --button-bg: #4a1f1f;            /* pozadí tlačítek */
+    --button-border: #a14a4a;        /* červenohnědý okraj */
+    --delete-btn-bg: #b01313;        /* krvavě červené delete tlačítko */
+    --delete-btn-text: #ffffff;      /* bílé písmo */
+    --row-bg: rgba(60, 20, 20, 0.6); /* tmavě rudý průhledný pruh */
+    --panel-bg: #2b1515;             /* panelový podklad */
+    --shadow: rgba(0, 0, 0, 0.6);    /* trochu hlubší stín */
+    --input-color: #f8d7d7;          /* text inputů */
+    --button-color: #f8d7d7;         /* text tlačítek */
+
+    --pulse-color: rgba(194, 59, 59, 0.7);   /* barva pulsujícího boxu */
+    --pulse-color-light: rgba(194, 59, 59, 0.5); /* světlejší verze pro stín */
+    --pulse-duration-box: 1.5s;              /* délka animace pro box */
+    --pulse-duration-btn: 2s;                /* délka animace pro tlačítko */
+
+}

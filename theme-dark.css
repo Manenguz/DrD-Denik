@@ -2,9 +2,10 @@
     --bg-main: #1c1a17;
     --bg-container: #2a2722;
     --text-color: #f3e8c0;
-    --border-color: #5a4a36;
+    --border-color: #665a45;
     --input-bg: #3a342b;
     --input-border: #665a45;
+    --box-background: #ffffff;
     --box-border: #7b674a;
     --box-active-bg: #c04b4b;
     --box-active-border: #8a2a2a;
@@ -17,7 +18,7 @@
     --delete-btn-bg: #a33;
     --delete-btn-text: #ffffff;
     --row-bg: rgba(50, 45, 40, 0.6);
-    --panel-bg: rgba(255, 255, 255, 0.08);
+    --panel-bg:  #3a342b;
     --shadow: rgba(0, 0, 0, 0.5);
     --input-color: #f3e8c0;
     --button-color: #f3e8c0;

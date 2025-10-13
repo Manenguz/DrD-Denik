@@ -112,7 +112,7 @@ h1 {
     height: 18px;
     border: 1px solid var(--box-border);
     border-radius: 4px;
-    background: #fff;
+    background: var(--box-background);
     cursor: pointer;
 }
 
@@ -364,3 +364,30 @@ textarea {
     .stat-name { display:block; margin-bottom:6px; }
     .stat-line { padding: 6px; }
 }
+
+
+/* --- pulsující animace --- */
+/* ---
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 var(--pulse-color);
+    }
+    50% {
+        box-shadow: 0 0 20px 10px var(--pulse-color-light);
+    }
+    100% {
+        box-shadow: 0 0 0 0 var(--pulse-color);
+    }
+}
+--- */
+
+/* --- aplikace na aktivní prvky --- */
+/* ---
+.box-active {
+    animation: pulse var(--pulse-duration-box) infinite;
+}
+
+.delete-btn {
+    animation: pulse var(--pulse-duration-btn) infinite;
+}
+--- */
