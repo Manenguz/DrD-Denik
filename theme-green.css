@@ -15,7 +15,7 @@
     --collapsible-bg: #1a2a1a;       /* skládací bloky – tmavá lesní */
     --button-bg: #3e6f3e;            /* pozadí tlačítek */
     --button-border: #5cb85c;        /* okraj tlačítek */
-    --delete-btn-bg: #a13c13;        /* „nebezpečné“ akcentní tlačítko, hnědočervené */
+    --delete-btn-bg: #4d4336;        /* „nebezpečné“ akcentní tlačítko, hnědočervené */
     --delete-btn-text: #ffffff;      /* bílé písmo */
     --row-bg: rgba(30, 50, 30, 0.6); /* tmavě zelený průhledný pruh */
     --panel-bg: #1a2a1a;             /* panelový podklad */
