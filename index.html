@@ -89,6 +89,9 @@
 
             <label><strong>Prožitá dobrodružství:</strong></label>
             <textarea id="adventures" rows="6" placeholder="Seznam/úryvky dobrodružství..."></textarea>
+
+            <label><strong>Povahový rys:</strong></label>
+            <textarea id="personality-trait" rows="3"></textarea>
         </div>
     </section>
 
@@ -105,16 +108,13 @@
     <section class="section">
         <button class="collapsible">Dovednosti a schopnosti</button>
         <div class="content">
+            <label><strong>Rasová zvláštní schopnost:</strong></label>
+            <textarea id="racial-ability" rows="3"></textarea>
+
             <div id="skills-list" class="items-list"></div>
             <div class="add-controls">
                 <button id="add-skill" class="add-btn">+ Přidat dovednost</button>
             </div>
-            <br />
-            <label><strong>Rasová zvláštní schopnost:</strong></label>
-            <textarea id="racial-ability" rows="3"></textarea>
-
-            <label><strong>Povahový rys:</strong></label>
-            <textarea id="personality-trait" rows="3"></textarea>
         </div>
     </section>
 
@@ -122,9 +122,9 @@
     <section class="section">
         <button class="collapsible">Kouzla a rituály</button>
         <div class="content">
-            <div id="spells-list"></div>
+            <div id="spells-list" class="items-list"></div>
             <div class="add-controls">
-                <button class="add-btn" id="add-spell">+ Přidat kouzlo</button>
+                <button id="add-spell" class="add-btn">+ Přidat kouzlo</button>
             </div>
         </div>
     </section>
@@ -170,15 +170,15 @@
                 </div>
             </div>
 
-            <!-- přes celou šířku -->
-            <label><strong>Charakteristika:</strong></label>
-            <textarea id="helper-description" rows="4" placeholder="Popis pomocníka..."></textarea>
-
             <!-- jednolinkové vstupy -->
             <div class="helper-single-row">
                 <input id="helper-boundary" placeholder="Hranice" />
                 <input id="helper-payment" placeholder="Platba" />
             </div>
+
+            <!-- přes celou šířku -->
+            <label><strong>Charakteristika:</strong></label>
+            <textarea id="helper-description" rows="4" placeholder="Popis pomocníka..."></textarea>
 
             <!-- přes celou šířku -->
             <label><strong>Zvláštní schopnosti:</strong></label>

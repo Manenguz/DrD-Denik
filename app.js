@@ -264,7 +264,7 @@ function createSkillRow(name="", source="", desc=""){
 /* ---------- Create dynamic rows ---------- */
 function createSpellRow(name="", source="", desc=""){
   const div=document.createElement("div");
-  div.className="spell-row";
+  div.className="skill-row";
 
   const nameInput=document.createElement("input");
   nameInput.className="name"; nameInput.placeholder="Název (max 50)"; nameInput.maxLength=50; nameInput.value=name;
@@ -333,14 +333,11 @@ function createClassRow(name = "", level = "") {
     saveAll();
   });
 
-  // teď už jen name a level reagují na input
   [nameInput, levelInput].forEach(el => el.addEventListener("input", saveAll));
 
   div.append(nameInput, levelInput, delBtn);
   document.getElementById("classes-list").appendChild(div);
 }
-
-
 
 function createEquipmentRow(name="", price="", desc=""){
   const div=document.createElement("div");
@@ -366,15 +363,30 @@ function createEquipmentRow(name="", price="", desc=""){
 }
 
 /* ---------- Buttons and wiring ---------- */
-document.getElementById("add-skill").addEventListener("click",()=>{ createSkillRow(); saveAll(); });
-document.getElementById("add-spell").addEventListener("click",()=>{ createSpellRow(); saveAll(); });
-document.getElementById("add-weapon").addEventListener("click",()=>{ createWeaponRow(); saveAll(); });
-document.getElementById("add-equipment").addEventListener("click",()=>{ createEquipmentRow(); saveAll(); });
+document.getElementById("add-skill").addEventListener("click",()=>{
+    createSkillRow();
+    saveAll();
+});
+document.getElementById("add-spell").addEventListener("click",()=>{
+    createSpellRow();
+    saveAll();
+});
+document.getElementById("add-weapon").addEventListener("click",()=>{
+    createWeaponRow();
+    saveAll();
+});
+document.getElementById("add-equipment").addEventListener("click",()=>{
+    createEquipmentRow();
+    saveAll();
+});
 document.getElementById("add-class").addEventListener("click", () => {
   createClassRow();
   saveAll();
 });
-document.getElementById("save-btn").addEventListener("click",()=>{ saveAll(); alert("Deník uložen do localStorage ✅"); });
+document.getElementById("save-btn").addEventListener("click",()=>{
+    saveAll();
+    alert("Deník uložen do localStorage ✅");
+});
 
 document.getElementById("export-btn").addEventListener("click",()=>{
   saveAll();
