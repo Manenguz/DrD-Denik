@@ -52,6 +52,7 @@ h1 {
     border: 1px solid #4d4336;
     border-radius: 8px;
     padding: 8px;
+    margin: 2px;
 }
 
 .stat-name {
