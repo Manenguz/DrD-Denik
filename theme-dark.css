@@ -22,4 +22,9 @@
     --shadow: rgba(0, 0, 0, 0.5);
     --input-color: #f3e8c0;
     --button-color: #f3e8c0;
+
+    --pulse-color: #8d7a59;   /* barva pulsujícího boxu */
+    --pulse-color-light: #f3e8c0; /* světlejší verze pro stín */
+    --pulse-duration-box: 1.5s;              /* délka animace pro box */
+    --pulse-duration-btn: 2s;                /* délka animace pro tlačítko */
 }
