@@ -119,6 +119,31 @@ h1 {
 .box.active { background: var(--box-active-bg); border-color: var(--box-active-border); }
 .box.injured { background: var(--box-injured-bg); border-color: var(--box-injured-border); }
 
+/* ---------- Ohrožení ---------- */
+#danger-boxes {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+}
+
+#danger-boxes .box {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--box-border);
+    border-radius: 4px;
+    background: var(--box-background);
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+#danger-boxes .box.active {
+    background: var(--box-active-bg);
+    border-color: var(--box-active-border);
+}
+
+
 /* ---------- Info panel ---------- */
 .info-panel {
     flex: 0 0 300px;
