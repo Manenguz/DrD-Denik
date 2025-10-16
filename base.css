@@ -286,13 +286,8 @@ textarea {
     color: var(--input-color);
 }
 
-.skill-row small, .weapon-row small, .equipment-row small, .class-row small, .spell-row small {
-    background: var(--input-bg);
-    border: 1px solid var(--input-border);
-    border-radius: 6px;
-    padding: 6px;
+.skill-row input.small, .weapon-row input.small, .equipment-row input.small, .class-row input.small, .spell-row input.small {
     width: 10%;
-    color: var(--input-color);
 }
 
 .skill-row textarea, .weapon-row textarea, .equipment-row textarea, .class-row textarea, .spell-row textarea {
