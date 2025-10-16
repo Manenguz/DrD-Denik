@@ -282,7 +282,16 @@ textarea {
     border: 1px solid var(--input-border);
     border-radius: 6px;
     padding: 6px;
-    width: 20%;
+    width: 30%;
+    color: var(--input-color);
+}
+
+.skill-row small, .weapon-row small, .equipment-row small, .class-row small, .spell-row small {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    padding: 6px;
+    width: 10%;
     color: var(--input-color);
 }
 
