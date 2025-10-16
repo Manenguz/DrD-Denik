@@ -9,8 +9,11 @@ let character = {
     xp: {total: 0, free: 0},
     stats: {
         body: {max: 6, states: []},
+        bodyInjuries: "",
         soul: {max: 6, states: []},
-        influence: {max: 6, states: []}
+        soulInjuries: "",
+        influence: {max: 6, states: []},
+        influenceInjuries: ""
     },
     danger: {states: Array(9).fill(0)},
     classes: [], // {name, level, desc}
@@ -60,6 +63,10 @@ function saveAll() {
             character.stats[stat].states.push(s);
         }
     });
+
+    character.stats.bodyInjuries = document.getElementById("body-injuries").value || "";
+    character.stats.soulInjuries = document.getElementById("soul-injuries").value || "";
+    character.stats.influenceInjuries = document.getElementById("influence-injuries").value || "";
 
     // danger
     const dangerBoxes = document.getElementById("danger-boxes").children;
@@ -141,6 +148,10 @@ function renderAll() {
         maxInput.value = character.stats[stat].max || 0;
         renderStatBoxes(stat);
     });
+
+    document.getElementById("body-injuries").value = character.stats.bodyInjuries || "";
+    document.getElementById("soul-injuries").value = character.stats.soulInjuries || "";
+    document.getElementById("influence-injuries").value = character.stats.influenceInjuries || "";
 
     renderDangerBoxes();
 
@@ -516,8 +527,11 @@ document.getElementById("reset-btn").addEventListener("click", () => {
         xp: {total: 0, free: 0},
         stats: {
             body: {max: 6, states: []},
+            bodyInjuries: "",
             soul: {max: 6, states: []},
-            influence: {max: 6, states: []}
+            soulInjuries: "",
+            influence: {max: 6, states: []},
+            influenceInjuries: ""
         },
         classes: [],
         skills: [],
