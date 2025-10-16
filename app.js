@@ -408,7 +408,7 @@ function createClassRow(name = "", level = "") {
     nameInput.value = name;
 
     const levelInput = document.createElement("input");
-    levelInput.className = "level";
+    levelInput.className = "small";
     levelInput.type = "number";
     levelInput.min = "1";
     levelInput.max = "5";
