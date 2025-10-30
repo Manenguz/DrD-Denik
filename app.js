@@ -453,45 +453,48 @@ function createClassRow(name = '', level = '') {
     const row = document.createElement('div');
     row.classList.add('class-row');
 
-    const nameInput = document.createElement("input"); 
-    nameInput.className = "name"; 
-    nameInput.placeholder = "Název povolání"; 
+    // Název povolání
+    const nameInput = document.createElement("input");
+    nameInput.className = "name";
+    nameInput.placeholder = "Název povolání";
     nameInput.value = name;
 
-    const levelInput = document.createElement("input"); 
-    levelInput.className = "small"; 
-    levelInput.type = "number"; 
-    levelInput.min = "1"; 
-    levelInput.max = "5"; 
-    levelInput.placeholder = "Úroveň"; 
-    levelInput.value = level; 
-    
-    const delBtn = document.createElement("button"); 
-    delBtn.className = "delete-btn"; 
-    delBtn.textContent = "✖"; 
-    delBtn.addEventListener("click", () => { 
-        div.remove(); 
-        saveAll(); 
-    });
+    // Úroveň
+    const levelInput = document.createElement("input");
+    levelInput.className = "small";
+    levelInput.type = "number";
+    levelInput.min = "1";
+    levelInput.max = "5";
+    levelInput.placeholder = "Úroveň";
+    levelInput.value = level;
 
     // Tlačítko info
     const infoBtn = document.createElement('button');
-    infoBtn.className = 'delete-btn';
-    infoBtn.textContent = 'Zobrazit schopnosti';
+    infoBtn.className = 'info-btn';
+    infoBtn.textContent = 'ℹ️';
     infoBtn.title = 'Zobraz schopnosti';
 
-    // Box s popisem (skrytý)
+    // Tlačítko mazání
+    const delBtn = document.createElement("button");
+    delBtn.className = "delete-btn";
+    delBtn.textContent = "✖";
+    delBtn.title = "Smazat toto povolání";
+    delBtn.addEventListener("click", () => {
+        row.remove();
+        saveAll();
+    });
+
+    // Box s popisem (schopnosti)
     const descBox = document.createElement('div');
     descBox.classList.add('class-description');
     descBox.style.display = 'none';
 
-    // Po kliknutí na ℹ️
+    // Klik na ℹ️
     infoBtn.addEventListener('click', () => {
         const className = nameInput.value.trim();
         const abilities = classDescriptions[className];
 
         if (abilities && abilities.length > 0) {
-            // Vytvoří HTML seznam
             descBox.innerHTML = `
                 <strong>Schopnosti ${className}:</strong>
                 <ul>${abilities.map(a => `<li>${a}</li>`).join('')}</ul>
@@ -500,22 +503,22 @@ function createClassRow(name = '', level = '') {
             descBox.innerHTML = `<em>Pro '${className}' nejsou v JSONu žádné schopnosti.</em>`;
         }
 
-        // Přepnutí zobrazení
         descBox.style.display = descBox.style.display === 'none' ? 'block' : 'none';
     });
 
-    // Sestavení řádku
+    // Horní část řádku
     const topRow = document.createElement('div');
     topRow.classList.add('class-top');
-    topRow.appendChild(nameInput);
-    topRow.appendChild(levelInput);
-    topRow.appendChild(infoBtn);
+    topRow.append(nameInput, levelInput, infoBtn, delBtn);
 
-    row.appendChild(topRow);
-    row.appendChild(descBox);
+    row.append(topRow, descBox);
+
+    // Aby se po přidání rovnou zobrazil
+    document.getElementById("classes-list").appendChild(row);
 
     return row;
 }
+
 
 
 function createEquipmentRow(name = "", price = "", desc = "") {
