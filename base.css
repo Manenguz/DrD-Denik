@@ -349,7 +349,6 @@ textarea {
 
 .class-row button {
     flex: 0 0 auto; /* tlačítka neexpandují */
-    margin: 0;      /* odstraní případný margin */
     white-space: nowrap;
 }
 
