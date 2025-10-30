@@ -455,20 +455,28 @@ function createClassRow(name = '', level = '') {
 
     // Název povolání
     const nameInput = document.createElement('input');
+    nameInput.className = "name";
     nameInput.placeholder = 'Název povolání';
     nameInput.value = name;
     nameInput.classList.add('class-name');
 
     // Úroveň
     const levelInput = document.createElement('input');
+    levelInput.className = "small";
     levelInput.type = 'number';
     levelInput.min = 1;
     levelInput.placeholder = 'Úroveň';
     levelInput.value = level;
 
+    //  tlačítko na mazání
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = '✖';
+    deleteBtn.title = 'Odstranit toto povolání';
+    deleteBtn.addEventListener('click', () => row.remove());
+
     // Tlačítko info
     const infoBtn = document.createElement('button');
-    infoBtn.textContent = 'ℹ️';
+    infoBtn.textContent = 'Zobrazit schopnosti';
     infoBtn.title = 'Zobraz schopnosti';
 
     // Box s popisem (skrytý)
