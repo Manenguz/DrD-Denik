@@ -453,29 +453,30 @@ function createClassRow(name = '', level = '') {
     const row = document.createElement('div');
     row.classList.add('class-row');
 
-    // Název povolání
-    const nameInput = document.createElement('input');
-    nameInput.className = "name";
-    nameInput.placeholder = 'Název povolání';
+    const nameInput = document.createElement("input"); 
+    nameInput.className = "name"; 
+    nameInput.placeholder = "Název povolání"; 
     nameInput.value = name;
-    nameInput.classList.add('class-name');
 
-    // Úroveň
-    const levelInput = document.createElement('input');
-    levelInput.className = "small";
-    levelInput.type = 'number';
-    levelInput.min = 1;
-    levelInput.placeholder = 'Úroveň';
-    levelInput.value = level;
-
-    //  tlačítko na mazání
-    const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = '✖';
-    deleteBtn.title = 'Odstranit toto povolání';
-    deleteBtn.addEventListener('click', () => row.remove());
+    const levelInput = document.createElement("input"); 
+    levelInput.className = "small"; 
+    levelInput.type = "number"; 
+    levelInput.min = "1"; 
+    levelInput.max = "5"; 
+    levelInput.placeholder = "Úroveň"; 
+    levelInput.value = level; 
+    
+    const delBtn = document.createElement("button"); 
+    delBtn.className = "delete-btn"; 
+    delBtn.textContent = "✖"; 
+    delBtn.addEventListener("click", () => { 
+        div.remove(); 
+        saveAll(); 
+    });
 
     // Tlačítko info
     const infoBtn = document.createElement('button');
+    infoBtn.className = 'delete-btn';
     infoBtn.textContent = 'Zobrazit schopnosti';
     infoBtn.title = 'Zobraz schopnosti';
 
