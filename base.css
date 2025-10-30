@@ -314,7 +314,6 @@ textarea {
 
 .class-row {
     display: flex;
-    flex-wrap: nowrap; /* zabrání zalomení */
     gap: 6px;
     align-items: center; /* vertikálně vycentrovat */
     margin-bottom: 8px;
@@ -349,7 +348,6 @@ textarea {
 
 .class-row button {
     flex: 0 0 auto; /* tlačítka neexpandují */
-    white-space: nowrap;
 }
 
 .skill-row input.small, .weapon-row input.small, .equipment-row input.small, .spell-row input.small {
