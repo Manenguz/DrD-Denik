@@ -310,17 +310,27 @@ textarea {
     color: var(--input-color);
 }
 
-/* ---------- Class row dropdown a level ---------- */
+.class-row {
+    align-items: center; /* místo flex-start */
+}
+
+.class-row input.small {
+    flex: 0 0 10%;       /* fixní šířka 10% */
+    min-width: 40px;
+}
+
+/* Select povolání */
 .class-row select {
+    flex: 0 0 30%;       /* pevná šířka 30% řádku */
+    min-width: 100px;    /* aby byl vždy použitelný na malých obrazovkách */
     background: var(--input-bg);
     border: 1px solid var(--input-border);
     border-radius: 6px;
     padding: 6px;
-    width: 30%;
     color: var(--input-color);
 }
 
-.skill-row input.small, .weapon-row input.small, .equipment-row input.small, .class-row input.small, .spell-row input.small {
+.skill-row input.small, .weapon-row input.small, .equipment-row input.small, .spell-row input.small {
     width: 10%;
 }
 
