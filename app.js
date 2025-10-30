@@ -1,6 +1,17 @@
 /* App logic: stats with 3-state boxes, dynamic items, import/export, persistence */
 const STORAGE_KEY = "drd2_denik_v3";
 
+/* Load class descriptions from JSON */
+let classDescriptions = {};
+
+fetch('classes.json')
+    .then(res => res.json())
+    .then(data => {
+        classDescriptions = data;
+        console.log("Načteny popisy povolání:", data);
+    })
+    .catch(err => console.error("Chyba při načítání classes.json:", err));
+
 /* Character data model */
 let character = {
     name: "",
@@ -438,36 +449,65 @@ function createWeaponRow(name = "", price = "", desc = "") {
     document.getElementById("weapons-list").appendChild(div);
 }
 
-function createClassRow(name = "", level = "") {
-    const div = document.createElement("div");
-    div.className = "class-row";
+function createClassRow(name = '', level = '') {
+    const row = document.createElement('div');
+    row.classList.add('class-row');
 
-    const nameInput = document.createElement("input");
-    nameInput.className = "name";
-    nameInput.placeholder = "Název povolání";
+    // Název povolání
+    const nameInput = document.createElement('input');
+    nameInput.placeholder = 'Název povolání';
     nameInput.value = name;
+    nameInput.classList.add('class-name');
 
-    const levelInput = document.createElement("input");
-    levelInput.className = "small";
-    levelInput.type = "number";
-    levelInput.min = "1";
-    levelInput.max = "5";
-    levelInput.placeholder = "Úroveň";
+    // Úroveň
+    const levelInput = document.createElement('input');
+    levelInput.type = 'number';
+    levelInput.min = 1;
+    levelInput.placeholder = 'Úroveň';
     levelInput.value = level;
 
-    const delBtn = document.createElement("button");
-    delBtn.className = "delete-btn";
-    delBtn.textContent = "✖";
-    delBtn.addEventListener("click", () => {
-        div.remove();
-        saveAll();
+    // Tlačítko info
+    const infoBtn = document.createElement('button');
+    infoBtn.textContent = 'ℹ️';
+    infoBtn.title = 'Zobraz schopnosti';
+
+    // Box s popisem (skrytý)
+    const descBox = document.createElement('div');
+    descBox.classList.add('class-description');
+    descBox.style.display = 'none';
+
+    // Po kliknutí na ℹ️
+    infoBtn.addEventListener('click', () => {
+        const className = nameInput.value.trim();
+        const abilities = classDescriptions[className];
+
+        if (abilities && abilities.length > 0) {
+            // Vytvoří HTML seznam
+            descBox.innerHTML = `
+                <strong>Schopnosti ${className}:</strong>
+                <ul>${abilities.map(a => `<li>${a}</li>`).join('')}</ul>
+            `;
+        } else {
+            descBox.innerHTML = `<em>Pro '${className}' nejsou v JSONu žádné schopnosti.</em>`;
+        }
+
+        // Přepnutí zobrazení
+        descBox.style.display = descBox.style.display === 'none' ? 'block' : 'none';
     });
 
-    [nameInput, levelInput].forEach(el => el.addEventListener("input", saveAll));
+    // Sestavení řádku
+    const topRow = document.createElement('div');
+    topRow.classList.add('class-top');
+    topRow.appendChild(nameInput);
+    topRow.appendChild(levelInput);
+    topRow.appendChild(infoBtn);
 
-    div.append(nameInput, levelInput, delBtn);
-    document.getElementById("classes-list").appendChild(div);
+    row.appendChild(topRow);
+    row.appendChild(descBox);
+
+    return row;
 }
+
 
 function createEquipmentRow(name = "", price = "", desc = "") {
     const div = document.createElement("div");
@@ -620,4 +660,12 @@ window.addEventListener("DOMContentLoaded", () => {
     if (!character.spells.length) createSpellRow();
     if (!character.weapons.length) createWeaponRow();
     if (!character.equipment.length) createEquipmentRow();
+});
+
+const addClassBtn = document.getElementById('add-class');
+const classesList = document.getElementById('classes-list');
+
+addClassBtn.addEventListener('click', () => {
+    const newRow = createClassRow();
+    classesList.appendChild(newRow);
 });
