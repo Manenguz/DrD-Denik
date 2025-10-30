@@ -335,10 +335,14 @@ function readItemRows(containerId, fieldNames) {
     const res = [];
     const container = document.getElementById(containerId);
     for (let r of container.children) {
-        const inputs = r.querySelectorAll("input,textarea");
+        const inputs = r.querySelectorAll("input, textarea, select");
         if (!inputs.length) continue;
         const obj = {};
-        fieldNames.forEach((f, i) => obj[f] = (inputs[i] && inputs[i].value) ? inputs[i].value : "");
+        fieldNames.forEach((f, i) => {
+            if (!inputs[i]) return;
+            if (inputs[i].tagName === 'SELECT') obj[f] = inputs[i].value;
+            else obj[f] = inputs[i].value || "";
+        });
         res.push(obj);
     }
     return res;
