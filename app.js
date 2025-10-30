@@ -527,9 +527,6 @@ function createClassRow(selectedClass = '', level = '') {
     return row;
 }
 
-
-
-
 function createEquipmentRow(name = "", price = "", desc = "") {
     const div = document.createElement("div");
     div.className = "equipment-row";

@@ -310,6 +310,26 @@ textarea {
     color: var(--input-color);
 }
 
+/* ---------- Class row dropdown a level ---------- */
+.class-row .class-select {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    padding: 6px;
+    color: var(--input-color);
+    font-size: 14px;
+    flex: 1 1 30%;        /* podobně jako .name nebo .small */
+}
+
+.class-row input.small {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    padding: 6px;
+    color: var(--input-color);
+    width: 10%;           /* stejně jako ostatní small inputy */
+}
+
 .skill-row input.small, .weapon-row input.small, .equipment-row input.small, .class-row input.small, .spell-row input.small {
     width: 10%;
 }
