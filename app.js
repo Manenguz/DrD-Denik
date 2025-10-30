@@ -491,7 +491,7 @@ function createClassRow(selectedClass = '', level = '') {
 
     // Tlačítko info
     const infoBtn = document.createElement('button');
-    infoBtn.className = 'delete-btn';
+    infoBtn.className = 'info-btn';
     infoBtn.textContent = 'Zobraz schopnosti';
     infoBtn.title = 'Zobraz schopnosti';
 

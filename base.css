@@ -284,6 +284,17 @@ textarea {
     font-weight: bold;
 }
 
+.info-btn {
+    background: var(--delete-btn-bg);
+    border: none;
+    color: var(--delete-btn-text);
+    padding: 6px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right:1%;
+}
+
 /* ---------- Items rows ---------- */
 .items-list {
     margin-top: 8px;
@@ -314,13 +325,10 @@ textarea {
     color: var(--input-color);
 }
 
-.class-row {
-    align-items: center; /* místo flex-start */
-}
-
 .class-row input.small {
     flex: 0 0 10%;       /* fixní šířka 10% */
     min-width: 40px;
+    margin-right: 1%;
 }
 
 /* Select povolání */
@@ -332,6 +340,7 @@ textarea {
     border-radius: 6px;
     padding: 6px;
     color: var(--input-color);
+    margin-right: 1%;
 }
 
 .skill-row input.small, .weapon-row input.small, .equipment-row input.small, .spell-row input.small {
