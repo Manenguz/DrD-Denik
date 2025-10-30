@@ -492,7 +492,7 @@ function createClassRow(selectedClass = '', level = '') {
     // Tlačítko info
     const infoBtn = document.createElement('button');
     infoBtn.className = 'delete-btn';
-    infoBtn.textContent = 'ℹ️';
+    infoBtn.textContent = 'Zobraz schopnosti';
     infoBtn.title = 'Zobraz schopnosti';
 
     // Box s popisem (schopnosti)
@@ -507,7 +507,7 @@ function createClassRow(selectedClass = '', level = '') {
 
         if (abilities && abilities.length > 0) {
             descBox.innerHTML = `
-                <strong>Schopnosti ${className}:</strong>
+                <strong> ${className}:</strong>
                 <ul>${abilities.map(a => `<li>${a}</li>`).join('')}</ul>
             `;
         } else {
