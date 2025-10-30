@@ -449,15 +449,25 @@ function createWeaponRow(name = "", price = "", desc = "") {
     document.getElementById("weapons-list").appendChild(div);
 }
 
-function createClassRow(name = '', level = '') {
+function createClassRow(selectedClass = '', level = '') {
     const row = document.createElement('div');
     row.classList.add('class-row');
 
-    // Název povolání
-    const nameInput = document.createElement("input");
-    nameInput.className = "name";
-    nameInput.placeholder = "Název povolání";
-    nameInput.value = name;
+    // Dropdown pro výběr povolání
+    const select = document.createElement('select');
+    select.className = 'class-select';
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = 'Vyber povolání';
+    select.appendChild(defaultOption);
+
+    Object.keys(classDescriptions).forEach(cls => {
+        const opt = document.createElement('option');
+        opt.value = cls;
+        opt.textContent = cls;
+        if (cls === selectedClass) opt.selected = true;
+        select.appendChild(opt);
+    });
 
     // Úroveň
     const levelInput = document.createElement("input");
@@ -467,12 +477,6 @@ function createClassRow(name = '', level = '') {
     levelInput.max = "5";
     levelInput.placeholder = "Úroveň";
     levelInput.value = level;
-
-    // Tlačítko info
-    const infoBtn = document.createElement('button');
-    infoBtn.className = 'info-btn';
-    infoBtn.textContent = 'ℹ️';
-    infoBtn.title = 'Zobraz schopnosti';
 
     // Tlačítko mazání
     const delBtn = document.createElement("button");
@@ -484,6 +488,12 @@ function createClassRow(name = '', level = '') {
         saveAll();
     });
 
+    // Tlačítko info
+    const infoBtn = document.createElement('button');
+    infoBtn.className = 'delete-btn';
+    infoBtn.textContent = 'ℹ️';
+    infoBtn.title = 'Zobraz schopnosti';
+
     // Box s popisem (schopnosti)
     const descBox = document.createElement('div');
     descBox.classList.add('class-description');
@@ -491,7 +501,7 @@ function createClassRow(name = '', level = '') {
 
     // Klik na ℹ️
     infoBtn.addEventListener('click', () => {
-        const className = nameInput.value.trim();
+        const className = select.value;
         const abilities = classDescriptions[className];
 
         if (abilities && abilities.length > 0) {
@@ -509,15 +519,14 @@ function createClassRow(name = '', level = '') {
     // Horní část řádku
     const topRow = document.createElement('div');
     topRow.classList.add('class-top');
-    topRow.append(nameInput, levelInput, infoBtn, delBtn);
+    topRow.append(select, levelInput, infoBtn, delBtn);
 
     row.append(topRow, descBox);
 
-    // Aby se po přidání rovnou zobrazil
     document.getElementById("classes-list").appendChild(row);
-
     return row;
 }
+
 
 
 
