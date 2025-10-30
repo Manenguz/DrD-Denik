@@ -16,6 +16,7 @@ let character = {
         influenceInjuries: ""
     },
     danger: {states: Array(9).fill(0)},
+    advantage: {states: Array(9).fill(0)},
     classes: [], // {name, level, desc}
     skills: [],      // {name, source, desc}
     spells: [],      // {name, source, desc}
@@ -74,6 +75,14 @@ function saveAll() {
     for (let i = 0; i < dangerBoxes.length; i++) {
         const s = parseInt(dangerBoxes[i].dataset.state) || 0;
         character.danger.states.push(s);
+    }
+
+    // advantage
+    const advantageBoxes = document.getElementById("advantage-boxes").children;
+    character.advantage.states = [];
+    for (let i = 0; i < advantageBoxes.length; i++) {
+        const s = parseInt(advantageBoxes[i].dataset.state) || 0;
+        character.advantage.states.push(s);
     }
 
 
@@ -154,6 +163,7 @@ function renderAll() {
     document.getElementById("influence-injuries").value = character.stats.influenceInjuries || "";
 
     renderDangerBoxes();
+    renderAdvantageBoxes();
 
     // items
     clearContainer("skills-list");
@@ -240,6 +250,36 @@ function updateDangerBoxVisual(box, state) {
     box.classList.remove("active");
     if (state === 1) box.classList.add("active");
 }
+
+function renderAdvantageBoxes() {
+    const container = document.getElementById("advantage-boxes");
+    if (!container) return;
+    container.innerHTML = "";
+    const savedStates = character.advantage.states || Array(9).fill(0);
+
+    for (let i = 0; i < 9; i++) {
+        const box = document.createElement("div");
+        box.className = "box";
+        const state = savedStates[i] ?? 0;
+        box.dataset.state = state;
+        updateAdvantageBoxVisual(box, state);
+
+        box.addEventListener("click", () => {
+            const newState = (parseInt(box.dataset.state) + 1) % 2;
+            box.dataset.state = newState;
+            updateAdvantageBoxVisual(box, newState);
+            saveAll();
+        });
+
+        container.appendChild(box);
+    }
+}
+
+function updateAdvantageBoxVisual(box, state) {
+    box.classList.remove("active");
+    if (state === 1) box.classList.add("active");
+}
+
 
 
 /* ---------- Helper bond boxes ---------- */
