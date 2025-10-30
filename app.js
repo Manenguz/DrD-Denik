@@ -9,8 +9,9 @@ fetch('classes.json')
     .then(data => {
         classDescriptions = data;
         console.log("Načteny popisy povolání:", data);
-    })
-    .catch(err => console.error("Chyba při načítání classes.json:", err));
+        // teď můžeme vykreslit všechny classRows
+        renderAll();
+    });
 
 /* Character data model */
 let character = {
@@ -133,17 +134,13 @@ function saveAll() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(character));
 }
 
-function loadAll() {
+function loadAll(render = true) {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
-        try {
-            const obj = JSON.parse(raw);
-            character = Object.assign(character, obj);
-        } catch (e) {
-            console.warn("Chyba při načítání localStorage:", e);
-        }
+        try { character = Object.assign(character, JSON.parse(raw)); } 
+        catch(e){ console.warn(e); }
     }
-    renderAll();
+    if (render) renderAll();
 }
 
 /* ---------- Rendering ---------- */
@@ -510,7 +507,7 @@ function createClassRow(selectedClass = '', level = '') {
                 <ul>${abilities.map(a => `<li>${a}</li>`).join('')}</ul>
             `;
         } else {
-            descBox.innerHTML = `<em>Pro '${className}' nejsou v JSONu žádné schopnosti.</em>`;
+            descBox.innerHTML = `<em>Pro zobrazení schopností je potřeba vybrat class.</em>`;
         }
 
         descBox.style.display = descBox.style.display === 'none' ? 'block' : 'none';
@@ -673,17 +670,14 @@ document.querySelectorAll(".collapsible").forEach(btn => {
 
 /* initial empty rows */
 window.addEventListener("DOMContentLoaded", () => {
-    loadAll();
-    if (!character.skills.length) createSkillRow();
-    if (!character.spells.length) createSpellRow();
-    if (!character.weapons.length) createWeaponRow();
-    if (!character.equipment.length) createEquipmentRow();
+    loadAll(false); // loadAll bez renderu
+    // jen prázdné rows pro skill/spell/weapon/equipment
 });
 
 const addClassBtn = document.getElementById('add-class');
 const classesList = document.getElementById('classes-list');
 
-addClassBtn.addEventListener('click', () => {
-    const newRow = createClassRow();
-    classesList.appendChild(newRow);
-});
+// addClassBtn.addEventListener('click', () => {
+//     const newRow = createClassRow();
+//     classesList.appendChild(newRow);
+// });
