@@ -311,7 +311,7 @@ textarea {
 }
 
 /* ---------- Class row dropdown a level ---------- */
-.class-row select select.class-select {
+.class-row select {
     background: var(--input-bg);
     border: 1px solid var(--input-border);
     border-radius: 6px;
