@@ -301,6 +301,10 @@ textarea {
     border: 1px solid var(--section-border);
 }
 
+.class-row {
+    align-items: center; /* místo flex-start */
+}
+
 .skill-row input, .weapon-row input, .equipment-row input, .class-row input, .spell-row input {
     background: var(--input-bg);
     border: 1px solid var(--input-border);
