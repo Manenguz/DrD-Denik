@@ -313,7 +313,11 @@ textarea {
 }
 
 .class-row {
-    align-items: center; /* místo flex-start */
+    display: flex;
+    flex-wrap: nowrap; /* zabrání zalomení */
+    gap: 6px;
+    align-items: center; /* vertikálně vycentrovat */
+    margin-bottom: 8px;
 }
 
 .skill-row input, .weapon-row input, .equipment-row input, .class-row input, .spell-row input {
@@ -341,6 +345,12 @@ textarea {
     padding: 6px;
     color: var(--input-color);
     margin-right: 1%;
+}
+
+.class-row button {
+    flex: 0 0 auto; /* tlačítka neexpandují */
+    margin: 0;      /* odstraní případný margin */
+    white-space: nowrap;
 }
 
 .skill-row input.small, .weapon-row input.small, .equipment-row input.small, .spell-row input.small {
