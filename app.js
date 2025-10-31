@@ -17,7 +17,7 @@ fetch('classes.json')
 let character = {
     name: "",
     race: "",
-    money: {gros: 0, halir: 0},
+    money: {dukat: 0, gros: 0, halir: 0},
     xp: {total: 0, free: 0},
     stats: {
         body: {max: 6, states: []},
@@ -52,12 +52,11 @@ function saveAll() {
     // capture header fields
     character.name = document.getElementById("character-name").value || "";
     character.race = document.getElementById("character-race").value || "";
+    character.money.dukat = parseInt(document.getElementById("money-dukat").value) || 0;
     character.money.gros = parseInt(document.getElementById("money-gros").value) || 0;
     character.money.halir = parseInt(document.getElementById("money-hal").value) || 0;
     character.classes = readItemRows("classes-list", ["name", "level"]);
-    // normalize halirs -> gros
-    character.money.gros += Math.floor(character.money.halir / 10);
-    character.money.halir = character.money.halir % 10;
+    document.getElementById("money-dukat").value = character.money.dukat;
     document.getElementById("money-gros").value = character.money.gros;
     document.getElementById("money-hal").value = character.money.halir;
 
@@ -137,7 +136,7 @@ function saveAll() {
 function loadAll(render = true) {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
-        try { character = Object.assign(character, JSON.parse(raw)); } 
+        try { character = Object.assign(character, JSON.parse(raw)); }
         catch(e){ console.warn(e); }
     }
     if (render) renderAll();
@@ -148,6 +147,7 @@ function renderAll() {
     // header
     document.getElementById("character-name").value = character.name || "";
     document.getElementById("character-race").value = character.race || "";
+    document.getElementById("money-dukat").value = character.money.dukat || 0;
     document.getElementById("money-gros").value = character.money.gros || 0;
     document.getElementById("money-hal").value = character.money.halir || 0;
     document.getElementById("xp-total").value = character.xp.total || 0;
@@ -622,7 +622,7 @@ document.getElementById("reset-btn").addEventListener("click", () => {
     character = {
         name: "",
         race: "",
-        money: {gros: 0, halir: 0},
+        money: {dukat: 0, gros: 0, halir: 0},
         xp: {total: 0, free: 0},
         stats: {
             body: {max: 6, states: []},
@@ -649,7 +649,7 @@ document.getElementById("reset-btn").addEventListener("click", () => {
 
 
 /* persist inputs */
-["character-name", "character-race", "money-gros", "money-hal", "xp-total", "xp-free",
+["character-name", "character-race", "money-dukat", "money-gros", "money-hal", "xp-total", "xp-free",
     "origin-story", "adventures", "racial-ability", "personality-trait",
     "body-max", "soul-max", "influence-max",
     "helper-name", "helper-description", "helper-boundary", "helper-payment", "helper-abilities",
