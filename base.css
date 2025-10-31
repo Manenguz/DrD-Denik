@@ -292,7 +292,6 @@ textarea {
     border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
-    margin-right:1%;
 }
 
 /* ---------- Items rows ---------- */
@@ -331,7 +330,6 @@ textarea {
 .class-row input.small {
     flex: 0 0 10%;       /* fixní šířka 10% */
     min-width: 40px;
-    margin-right: 1%;
 }
 
 /* Select povolání */
@@ -343,7 +341,6 @@ textarea {
     border-radius: 6px;
     padding: 6px;
     color: var(--input-color);
-    margin-right: 1%;
 }
 
 .class-row button {
