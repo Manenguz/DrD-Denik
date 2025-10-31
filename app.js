@@ -147,8 +147,11 @@ function saveAll() {
 function loadAll(render = true) {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
-        try { deepMerge(character, JSON.parse(raw)); }
-        catch(e){ console.warn(e); }
+        try {
+            deepMerge(character, JSON.parse(raw));
+        } catch (e) {
+            console.warn(e);
+        }
     }
     if (render) renderAll();
 }
@@ -298,7 +301,6 @@ function updateAdvantageBoxVisual(box, state) {
     box.classList.remove("active");
     if (state === 1) box.classList.add("active");
 }
-
 
 
 /* ---------- Helper bond boxes ---------- */
@@ -521,8 +523,18 @@ function createClassRow(selectedClass = '', level = '') {
 
         if (abilities && abilities.length > 0) {
             descBox.innerHTML = `
-                <strong> ${className}:</strong>
-                <ul>${abilities.map(a => `<li>${a}</li>`).join('')}</ul>
+                <strong>${className}:</strong>
+                <ul>${abilities.map((a, i) => {
+                            const isSection = a.startsWith("**") && a.endsWith("**");
+                            const text = a.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+                            let extraClass = "";
+            
+                            if (isSection) {
+                                extraClass = i === 0 ? "section-line first-section" : "section-line";
+                            }
+            
+                            return `<li class="${extraClass}">${text}</li>`;
+                        }).join('')}</ul>
             `;
         } else {
             descBox.innerHTML = `<em>Pro zobrazení schopností je potřeba vybrat class.</em>`;

@@ -494,3 +494,12 @@ textarea:focus {
     background: var(--input-bg);
     width: 100%;
 }
+
+.class-description li.section-line {
+    margin-top: 6px; /* nebo třeba 10px pro výraznější oddělení */
+    list-style-type: none; /* volitelné – odstraní tečku, pokud nechceš odrážku */
+}
+
+.class-description li.first-section {
+    margin-top: 0;           /* první sekce bez mezery */
+}
