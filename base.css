@@ -421,6 +421,12 @@ textarea {
     margin: 12px 0;
 }
 
+#name-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin: 12px 0;
+}
+
 #theme-switcher {
     margin: 12px 0;
     padding: 6px 10px;

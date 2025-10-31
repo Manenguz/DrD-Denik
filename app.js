@@ -712,3 +712,8 @@ const classesList = document.getElementById('classes-list');
 //     const newRow = createClassRow();
 //     classesList.appendChild(newRow);
 // });
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js')
+        .then(() => console.log('Service Worker registered'));
+}
