@@ -13,6 +13,17 @@ fetch('classes.json')
         renderAll();
     });
 
+function deepMerge(target, source) {
+    for (const key in source) {
+        if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
+            if (!target[key]) target[key] = {};
+            deepMerge(target[key], source[key]);
+        } else {
+            target[key] = source[key];
+        }
+    }
+}
+
 /* Character data model */
 let character = {
     name: "",
@@ -136,7 +147,7 @@ function saveAll() {
 function loadAll(render = true) {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
-        try { character = Object.assign(character, JSON.parse(raw)); }
+        try { deepMerge(character, JSON.parse(raw)); }
         catch(e){ console.warn(e); }
     }
     if (render) renderAll();
@@ -606,7 +617,7 @@ document.getElementById("import-file").addEventListener("change", (e) => {
     r.onload = () => {
         try {
             const data = JSON.parse(r.result);
-            character = Object.assign(character, data);
+            deepMerge(character, data);
             renderAll();
             saveAll();
             alert("Import dokončen ✅");
