@@ -479,3 +479,21 @@ textarea:focus {
     animation: pulse var(--pulse-duration-box) infinite;
     box-shadow: 0 0 10px 4px var(--pulse-color-light);
 }
+
+.class-top {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+    width: 100%;
+}
+
+.class-description {
+    margin-top: 6px;
+    padding: 6px 8px;
+    border: 1px solid var(--section-border);
+    border-radius: 6px;
+    background: var(--input-bg);
+    width: 100%;
+}
