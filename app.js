@@ -368,6 +368,7 @@ function createSkillRow(name = "", source = "", desc = "") {
     const descInput = document.createElement("textarea");
     descInput.placeholder = "Popis";
     descInput.value = desc;
+    descInput.rows = 3;
 
     const delBtn = document.createElement("button");
     delBtn.className = "delete-btn";
@@ -403,6 +404,7 @@ function createSpellRow(name = "", source = "", desc = "") {
     const descInput = document.createElement("textarea");
     descInput.placeholder = "Popis";
     descInput.value = desc;
+    descInput.rows = 3;
 
     const delBtn = document.createElement("button");
     delBtn.className = "delete-btn";
@@ -435,6 +437,7 @@ function createWeaponRow(name = "", price = "", desc = "") {
     const descInput = document.createElement("textarea");
     descInput.placeholder = "Popis";
     descInput.value = desc;
+    descInput.rows = 3;
 
     const delBtn = document.createElement("button");
     delBtn.className = "delete-btn";
@@ -545,6 +548,7 @@ function createEquipmentRow(name = "", price = "", desc = "") {
     const descInput = document.createElement("textarea");
     descInput.placeholder = "Popis";
     descInput.value = desc;
+    descInput.rows = 3;
 
     const delBtn = document.createElement("button");
     delBtn.className = "delete-btn";
