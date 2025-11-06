@@ -560,3 +560,71 @@ textarea:focus {
 .collapsible {
   display: none;
 }
+
+
+/* === Sekce Nastavení === */
+
+#importexport-section {
+  display: flex;
+  flex-direction: column;
+  min-height: 320px; /* můžeš zvýšit, pokud chceš větší prostor */
+  justify-content: space-between;
+  background: var(--panel-bg, rgba(240,230,205,0.6));
+  padding: 16px;
+  border: 1px solid var(--section-border);
+  border-radius: 8px;
+}
+
+/* Horní část (přepínač tématu) */
+#importexport-section #theme-switcher-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+/* Spodní část (import/export) */
+#importexport-section .import-export {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: auto; /* zaručí, že to zůstane dole */
+  background: var(--collapsible-bg);
+  border: 1px solid var(--section-border);
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+/* Tlačítka */
+#importexport-section .import-export button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--button-border);
+  background: var(--button-bg);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#importexport-section .import-export button:hover {
+  background: var(--box-active-bg);
+  border-color: var(--box-active-border);
+}
+
+/* Souborový input */
+#importexport-section .import-export input[type="file"] {
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  padding: 4px;
+  background: var(--input-bg);
+}
+
+/* Popisek verze */
+#importexport-section .import-export label {
+  flex-basis: 100%;
+  text-align: right;
+  opacity: 0.6;
+  font-size: 12px;
+  margin-top: 6px;
+}
