@@ -717,3 +717,35 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js')
         .then(() => console.log('Service Worker registered'));
 }
+
+
+/* -------------------------------
+   Přepínání sekcí přes levé menu
+--------------------------------*/
+document.addEventListener("DOMContentLoaded", () => {
+  const menuButtons = document.querySelectorAll(".side-menu button");
+  const sections = document.querySelectorAll(".main-panel .section");
+
+  // Skryj všechny sekce kromě první
+  sections.forEach(sec => sec.style.display = "none");
+  const firstSection = sections[0];
+  if (firstSection) firstSection.style.display = "block";
+
+  menuButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      // deaktivuj všechna tlačítka
+      menuButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      // zjisti, která sekce má být vidět
+      const target = btn.getAttribute("data-section");
+      sections.forEach(sec => {
+        if (sec.id === `${target}-section`) {
+          sec.style.display = "block";
+        } else {
+          sec.style.display = "none";
+        }
+      });
+    });
+  });
+});

@@ -49,8 +49,26 @@
                 </div>
             </div>
         </div>
+<div class="sheet-container">
 
-        <section class="section">
+  <div class="app-layout">
+    <!-- ===== LEVÉ MENU ===== -->
+    <nav class="side-menu">
+      <button data-section="stats" class="active">🧙‍♂️ Zdroje</button>
+      <button data-section="story">📜 Příběh</button>
+      <button data-section="classes">⚔️ Povolání</button>
+      <button data-section="skills">🧩 Dovednosti</button>
+      <button data-section="spells">✨ Kouzla</button>
+      <button data-section="weapons">🗡️ Zbraně</button>
+      <button data-section="equipment">🧥 Vybavení</button>
+      <button data-section="helper">🐾 Pomocník</button>
+      <button data-section="importexport">💾 Uložit / Export</button>
+    </nav>
+
+    <!-- ===== HLAVNÍ PANEL ===== -->
+    <main class="main-panel">
+      <!-- tady necháme všechny původní sekce -->
+      <section class="section" id="stats-section">…
             <button class="collapsible">🧙‍♂️ Zdroje a statistiky</button>
                 <div class="content">
             <!-- Horní řádek: vlevo statistiky, vpravo peníze + XP -->
@@ -111,11 +129,8 @@
                         </div>
                     </div>
                 </div>
-        </section>
-    </header>
-
-    <!-- Sekce: příběh -->
-    <section class="section">
+      </section>
+      <section class="section" id="story-section">
         <button class="collapsible">📜 Příběh hrdiny</button>
         <div class="content">
             <label><strong>Jak se stal hrdinou:</strong></label>
@@ -127,20 +142,16 @@
             <label><strong>Povahový rys:</strong></label>
             <textarea id="personality-trait" rows="3"></textarea>
         </div>
-    </section>
-
-    <!-- Sekce: povolání -->
-    <section class="section">
+      </section>
+      <section class="section" id="classes-section">
         <button class="collapsible">⚔️ Povolání</button>
         <div class="content">
             <div id="classes-list" class="list"></div>
             <button id="add-class" class="add-btn">+ Přidat povolání</button>
         </div>
-    </section>
-
-    <!-- Sekce: dovednosti (dynamické řádky) -->
-    <section class="section">
-        <button class="collapsible">🧩 Dovednosti a schopnosti</button>
+      </section>
+      <section class="section" id="skills-section">
+                <button class="collapsible">🧩 Dovednosti a schopnosti</button>
         <div class="content">
             <label><strong>Rasová zvláštní schopnost:</strong></label>
             <textarea id="racial-ability" rows="3"></textarea>
@@ -150,32 +161,26 @@
                 <button id="add-skill" class="add-btn">+ Přidat dovednost</button>
             </div>
         </div>
-    </section>
-
-    <!-- Sekce: Kouzla -->
-    <section class="section">
-        <button class="collapsible">✨ Kouzla a rituály</button>
+      </section>
+      <section class="section" id="spells-section">    
+            <button class="collapsible">✨ Kouzla a rituály</button>
         <div class="content">
             <div id="spells-list" class="items-list"></div>
             <div class="add-controls">
                 <button id="add-spell" class="add-btn">+ Přidat kouzlo</button>
             </div>
         </div>
-    </section>
-
-    <!-- Sekce: zbraně -->
-    <section class="section">
-        <button class="collapsible">🗡️ Zbraně</button>
+        </section>
+      <section class="section" id="weapons-section">
+                <button class="collapsible">🗡️ Zbraně</button>
         <div class="content">
             <div id="weapons-list" class="items-list"></div>
             <div class="add-controls">
                 <button id="add-weapon" class="add-btn">+ Přidat zbraň</button>
             </div>
         </div>
-    </section>
-
-    <!-- Sekce: vybavení -->
-    <section class="section">
+      </section>
+      <section class="section" id="equipment-section">        
         <button class="collapsible">🧥 Vybavení</button>
         <div class="content">
             <div id="equipment-list" class="items-list"></div>
@@ -184,9 +189,7 @@
             </div>
         </div>
     </section>
-
-
-    <section class="section">
+      <section class="section" id="helper-section">
         <button class="collapsible">🐾 Pomocník</button>
         <div class="content">
 
@@ -218,18 +221,23 @@
             <label><strong>Zvláštní schopnosti:</strong></label>
             <textarea id="helper-abilities" rows="3" placeholder="Seznam schopností..."></textarea>
         </div>
-    </section>
-
-    <!-- Import / Export -->
-    <section class="section">
-        <div class="import-export">
+      </section>
+      <section class="section" id="importexport-section">
+                <div class="import-export">
             <button id="save-btn">💾 Uložit (localStorage)</button>
             <button id="export-btn">⬇️ Exportovat JSON</button>
             <input id="import-file" type="file" accept=".json" />
             <button id="reset-btn">🗑️ Reset deníku</button> <!-- nové tlačítko -->
             <br /><label style="display: block; text-align: right;">v1.0.0, created by Manenguz</label>
         </div>
-    </section>
+      </section>
+    </main>
+  </div>
+
+</div>
+
+        
+    </header>
 
 </div>
 

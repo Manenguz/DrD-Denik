@@ -509,3 +509,54 @@ textarea:focus {
 .class-description li.first-section {
     margin-top: 0;           /* první sekce bez mezery */
 }
+
+/* === Layout s levým menu === */
+
+.app-layout {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.side-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--collapsible-bg);
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 170px;
+  border: 1px solid var(--section-border);
+  height: fit-content;
+  position: sticky;
+  top: 10px;
+}
+
+.side-menu button {
+  background: var(--button-bg);
+  border: 1px solid var(--button-border);
+  border-radius: 6px;
+  padding: 8px;
+  cursor: pointer;
+  text-align: left;
+  font-weight: bold;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.side-menu button:hover {
+  transform: scale(1.02);
+}
+
+.side-menu button.active {
+  background: var(--box-active-bg);
+  border-color: var(--box-active-border);
+}
+
+.main-panel {
+  flex: 1;
+}
+
+/* Collapsible tlačítka zneviditelníme (nejsou potřeba) */
+.collapsible {
+  display: none;
+}
