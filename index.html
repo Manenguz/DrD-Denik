@@ -24,20 +24,6 @@
 <div class="sheet-container">
 
     <header class="header-top">
-        <!-- Přepínače tématu – mohou být kdekoliv ve stránce -->
-        <div id="theme-switcher-wrapper">
-            <div id="theme-switcher">
-                <label for="theme-select">Vyber téma:</label>
-                <select id="theme-select">
-                    <option value="theme-parchment.css">Pergamen</option>
-                    <option value="theme-blue.css">Led</option>
-                    <option value="theme-dark.css">Kůže</option>
-                    <option value="theme-red.css">Krev</option>
-                    <option value="theme-green.css">Les</option>
-                </select>
-            </div>
-        </div>
-
         <h1>Deník hrdiny</h1>
         <div id="name-wrapper">
             <div class="header-grid">
@@ -62,7 +48,7 @@
       <button data-section="weapons">🗡️ Zbraně</button>
       <button data-section="equipment">🧥 Vybavení</button>
       <button data-section="helper">🐾 Pomocník</button>
-      <button data-section="importexport">💾 Uložit / Export</button>
+      <button data-section="importexport">💾 Nastavení</button>
     </nav>
 
     <!-- ===== HLAVNÍ PANEL ===== -->
@@ -222,7 +208,23 @@
             <textarea id="helper-abilities" rows="3" placeholder="Seznam schopností..."></textarea>
         </div>
       </section>
+
       <section class="section" id="importexport-section">
+
+                <!-- Přepínače tématu – mohou být kdekoliv ve stránce -->
+        <div id="theme-switcher-wrapper">
+            <div id="theme-switcher">
+                <label for="theme-select">Vyber téma:</label>
+                <select id="theme-select">
+                    <option value="theme-parchment.css">Pergamen</option>
+                    <option value="theme-blue.css">Led</option>
+                    <option value="theme-dark.css">Kůže</option>
+                    <option value="theme-red.css">Krev</option>
+                    <option value="theme-green.css">Les</option>
+                </select>
+            </div>
+        </div>
+
                 <div class="import-export">
             <button id="save-btn">💾 Uložit (localStorage)</button>
             <button id="export-btn">⬇️ Exportovat JSON</button>
