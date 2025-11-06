@@ -305,7 +305,10 @@ function updateAdvantageBoxVisual(box, state) {
 
 /* ---------- Helper bond boxes ---------- */
 function renderHelper() {
-    document.getElementById("helper-name").value = character.helper.name || "";
+    const nameEl = document.getElementById("helper-name");
+    if (!nameEl) return; // sekce ještě není v DOMu -> počkáme
+
+    nameEl.value = character.helper.name || "";
     document.getElementById("helper-description").value = character.helper.description || "";
     document.getElementById("helper-boundary").value = character.helper.boundary || "";
     document.getElementById("helper-payment").value = character.helper.payment || "";
@@ -313,8 +316,10 @@ function renderHelper() {
 
     const maxInput = document.getElementById("helper-bond-max");
     maxInput.value = character.helper.bond.max || 0;
+
     renderHelperBondBoxes();
 }
+
 
 function renderHelperBondBoxes() {
     const container = document.getElementById("helper-bond-boxes");
