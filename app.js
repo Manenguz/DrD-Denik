@@ -699,12 +699,6 @@ document.querySelectorAll(".collapsible").forEach(btn => {
     });
 });
 
-/* initial empty rows */
-window.addEventListener("DOMContentLoaded", () => {
-    loadAll(false); // loadAll bez renderu
-    // jen prázdné rows pro skill/spell/weapon/equipment
-});
-
 const addClassBtn = document.getElementById('add-class');
 const classesList = document.getElementById('classes-list');
 
@@ -718,33 +712,27 @@ if ('serviceWorker' in navigator) {
         .then(() => console.log('Service Worker registered'));
 }
 
-
-/* -------------------------------
-   Přepínání sekcí přes levé menu
---------------------------------*/
 document.addEventListener("DOMContentLoaded", () => {
+  // 1️⃣ načti uložená data
+  loadAll(true); // chceme rovnou renderovat
+
+  // 2️⃣ inicializuj levé menu
   const menuButtons = document.querySelectorAll(".side-menu button");
   const sections = document.querySelectorAll(".main-panel .section");
 
-  // Skryj všechny sekce kromě první
-  sections.forEach(sec => sec.style.display = "none");
+  sections.forEach(sec => (sec.style.display = "none"));
   const firstSection = sections[0];
   if (firstSection) firstSection.style.display = "block";
+  if (menuButtons[0]) menuButtons[0].classList.add("active");
 
   menuButtons.forEach(btn => {
     btn.addEventListener("click", () => {
-      // deaktivuj všechna tlačítka
       menuButtons.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
 
-      // zjisti, která sekce má být vidět
       const target = btn.getAttribute("data-section");
       sections.forEach(sec => {
-        if (sec.id === `${target}-section`) {
-          sec.style.display = "block";
-        } else {
-          sec.style.display = "none";
-        }
+        sec.style.display = sec.id === `${target}-section` ? "block" : "none";
       });
     });
   });
