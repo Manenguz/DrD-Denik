@@ -69,7 +69,7 @@ h1 {
 
 /* ---------- Stats panel ---------- */
 .stats-panel {
-    flex: 1 1 420px;
+    flex: 1 1 280px;
     min-width: 280px;
 }
 
@@ -323,7 +323,7 @@ textarea {
     border: 1px solid var(--input-border);
     border-radius: 6px;
     padding: 6px;
-    width: 30%;
+    width: 25%;
     color: var(--input-color);
 }
 
