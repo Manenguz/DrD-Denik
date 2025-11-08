@@ -305,7 +305,10 @@ function updateAdvantageBoxVisual(box, state) {
 
 /* ---------- Helper bond boxes ---------- */
 function renderHelper() {
-    document.getElementById("helper-name").value = character.helper.name || "";
+    const nameEl = document.getElementById("helper-name");
+    if (!nameEl) return; // sekce ještě není v DOMu -> počkáme
+
+    nameEl.value = character.helper.name || "";
     document.getElementById("helper-description").value = character.helper.description || "";
     document.getElementById("helper-boundary").value = character.helper.boundary || "";
     document.getElementById("helper-payment").value = character.helper.payment || "";
@@ -313,8 +316,10 @@ function renderHelper() {
 
     const maxInput = document.getElementById("helper-bond-max");
     maxInput.value = character.helper.bond.max || 0;
+
     renderHelperBondBoxes();
 }
+
 
 function renderHelperBondBoxes() {
     const container = document.getElementById("helper-bond-boxes");
@@ -699,12 +704,6 @@ document.querySelectorAll(".collapsible").forEach(btn => {
     });
 });
 
-/* initial empty rows */
-window.addEventListener("DOMContentLoaded", () => {
-    loadAll(false); // loadAll bez renderu
-    // jen prázdné rows pro skill/spell/weapon/equipment
-});
-
 const addClassBtn = document.getElementById('add-class');
 const classesList = document.getElementById('classes-list');
 
@@ -713,7 +712,69 @@ const classesList = document.getElementById('classes-list');
 //     classesList.appendChild(newRow);
 // });
 
+/* ---------- Service Worker ---------- */
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js')
+    navigator.serviceWorker
+        .register('./sw.js')
         .then(() => console.log('Service Worker registered'));
 }
+
+/* ---------- Inicializace aplikace a přepínání sekcí ---------- */
+let layoutMode = "side"; // "side" = levé menu, "top" = horní menu
+
+function updateLayoutMode() {
+    if (window.innerWidth < 768) {
+        layoutMode = "top";
+        document.body.classList.remove("layout-side");
+    } else {
+        layoutMode = "side";
+        document.body.classList.add("layout-side");
+    }
+
+    // automaticky otevři všechny collapsibles, pokud je aktivní levé menu
+    const allContents = document.querySelectorAll(".collapsible + .content");
+    allContents.forEach(c => {
+        if (layoutMode === "side") c.classList.add("active");
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    // 1️⃣ Načti data a vykresli
+    loadAll(true);
+
+    // 2️⃣ Urči layout režim
+    updateLayoutMode();
+    window.addEventListener("resize", updateLayoutMode);
+
+    // 3️⃣ Přepínání sekcí
+    const menuButtons = document.querySelectorAll(".side-menu button");
+    const sections = document.querySelectorAll(".main-panel .section");
+
+    sections.forEach(sec => (sec.style.display = "none"));
+    const firstSection = sections[0];
+    if (firstSection) firstSection.style.display = "block";
+    if (menuButtons[0]) menuButtons[0].classList.add("active");
+
+    menuButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            menuButtons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            const target = btn.getAttribute("data-section");
+
+            // zobraz jen odpovídající sekci
+            sections.forEach(sec => {
+                sec.style.display = sec.id === `${target}-section` ? "block" : "none";
+            });
+
+            // 🟢 když je aktivní levé menu, otevři collapsible uvnitř dané sekce
+            if (layoutMode === "side") {
+                const content = document.querySelector(`#${target}-section .content`);
+                if (content) content.classList.add("active");
+            }
+
+            // Pomocník se musí vždy přerenderovat
+            if (target === "helper") setTimeout(renderHelper, 50);
+        });
+    });
+});

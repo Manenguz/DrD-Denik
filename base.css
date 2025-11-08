@@ -69,12 +69,12 @@ h1 {
 
 /* ---------- Stats panel ---------- */
 .stats-panel {
-    flex: 1 1 420px;
+    flex: 1 1 280px;
     min-width: 280px;
 }
 
 .stat-line {
-    background: var(--panel-bg, rgba(240,230,205,0.6));
+    background: var(--panel-bg, rgba(240, 230, 205, 0.6));
     border: 1px solid var(--section-border);
     border-radius: 8px;
     padding: 8px;
@@ -117,8 +117,15 @@ h1 {
     cursor: pointer;
 }
 
-.box.active { background: var(--box-active-bg); border-color: var(--box-active-border); }
-.box.injured { background: var(--box-injured-bg); border-color: var(--box-injured-border); }
+.box.active {
+    background: var(--box-active-bg);
+    border-color: var(--box-active-border);
+}
+
+.box.injured {
+    background: var(--box-injured-bg);
+    border-color: var(--box-injured-border);
+}
 
 /* ---------- Ohrožení ---------- */
 #danger-boxes {
@@ -190,7 +197,7 @@ h1 {
 
 /* ---------- Money / XP ---------- */
 .money-xp {
-    background: var(--panel-bg, rgba(240,230,205,0.6));
+    background: var(--panel-bg, rgba(240, 230, 205, 0.6));
     padding: 8px;
     border-radius: 8px;
     border: 1px solid var(--section-border);
@@ -250,7 +257,9 @@ h1 {
     display: none;
 }
 
-.content.active { display: block; }
+.content.active {
+    display: block;
+}
 
 /* ---------- Textareas ---------- */
 textarea {
@@ -305,7 +314,7 @@ textarea {
     gap: 8px;
     align-items: flex-start;
     margin-bottom: 8px;
-    background: var(--row-bg, rgba(255,255,255,0.6));
+    background: var(--row-bg, rgba(255, 255, 255, 0.6));
     padding: 6px;
     border-radius: 6px;
     border: 1px solid var(--section-border);
@@ -323,19 +332,19 @@ textarea {
     border: 1px solid var(--input-border);
     border-radius: 6px;
     padding: 6px;
-    width: 30%;
+    width: 28%;
     color: var(--input-color);
 }
 
 .class-row input.small {
-    flex: 0 0 10%;       /* fixní šířka 10% */
+    flex: 0 0 10%; /* fixní šířka 10% */
     min-width: 40px;
 }
 
 /* Select povolání */
 .class-row select {
-    flex: 0 0 30%;       /* pevná šířka 30% řádku */
-    min-width: 100px;    /* aby byl vždy použitelný na malých obrazovkách */
+    flex: 0 0 30%; /* pevná šířka 30% řádku */
+    min-width: 100px; /* aby byl vždy použitelný na malých obrazovkách */
     background: var(--input-bg);
     border: 1px solid var(--input-border);
     border-radius: 6px;
@@ -361,9 +370,23 @@ textarea {
 }
 
 /* ---------- Helper section ---------- */
-.helper-top-row { display: flex; gap: 10px; margin-bottom: 10px; }
-.helper-top-row .half { flex: 1; display: flex; flex-direction: column; }
-.helper-top-row .stat-line { border: 1px solid var(--section-border); padding: 10px; border-radius: 5px; }
+.helper-top-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.helper-top-row .half {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.helper-top-row .stat-line {
+    border: 1px solid var(--section-border);
+    padding: 10px;
+    border-radius: 5px;
+}
 
 .top-info-input {
     background: var(--input-bg);
@@ -374,7 +397,7 @@ textarea {
 }
 
 .helper-top-row label {
-    flex: 1 1 50%;      /* každé label zabírá max. 50% */
+    flex: 1 1 50%; /* každé label zabírá max. 50% */
     display: flex;
     align-items: center;
     gap: 6px;
@@ -456,10 +479,23 @@ textarea {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 760px) {
-    .header-grid { flex-direction: column; }
-    .info-panel { min-width: unset; flex: 1 1 auto; }
-    .stat-name { display:block; margin-bottom:6px; }
-    .stat-line { padding: 6px; }
+    .header-grid {
+        flex-direction: column;
+    }
+
+    .info-panel {
+        min-width: unset;
+        flex: 1 1 auto;
+    }
+
+    .stat-name {
+        display: block;
+        margin-bottom: 6px;
+    }
+
+    .stat-line {
+        padding: 6px;
+    }
 }
 
 
@@ -507,5 +543,126 @@ textarea:focus {
 }
 
 .class-description li.first-section {
-    margin-top: 0;           /* první sekce bez mezery */
+    margin-top: 0; /* první sekce bez mezery */
+}
+
+/* === Layout s levým menu === */
+
+.app-layout {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.side-menu {
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: var(--collapsible-bg);
+    padding: 10px;
+    border-radius: 10px;
+    min-width: 170px;
+    border: 1px solid var(--section-border);
+    height: fit-content;
+    position: sticky;
+    top: 10px;
+}
+
+.side-menu button {
+    color: var(--text-color);
+    background: var(--button-bg);
+    border: 1px solid var(--button-border);
+    border-radius: 6px;
+    padding: 8px;
+    cursor: pointer;
+    text-align: left;
+    font-weight: bold;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.side-menu button:hover {
+    transform: scale(1.02);
+}
+
+.side-menu button.active {
+    background: var(--box-active-bg);
+    border-color: var(--box-active-border);
+}
+
+.main-panel {
+    flex: 1;
+}
+
+/* Collapsible tlačítka zneviditelníme (nejsou potřeba) */
+.collapsible {
+    display: none;
+}
+
+
+/* === Sekce Nastavení === */
+
+#importexport-section {
+    display: flex;
+    flex-direction: column;
+    min-height: 320px; /* můžeš zvýšit, pokud chceš větší prostor */
+    justify-content: space-between;
+    background: var(--panel-bg, rgba(240, 230, 205, 0.6));
+    padding: 16px;
+    border: 1px solid var(--section-border);
+    border-radius: 8px;
+}
+
+/* Horní část (přepínač tématu) */
+#importexport-section #theme-switcher-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+/* Spodní část (import/export) */
+#importexport-section .import-export {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: auto; /* zaručí, že to zůstane dole */
+    background: var(--collapsible-bg);
+    border: 1px solid var(--section-border);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+/* Tlačítka */
+#importexport-section .import-export button {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--button-border);
+    background: var(--button-bg);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#importexport-section .import-export button:hover {
+    background: var(--box-active-bg);
+    border-color: var(--box-active-border);
+}
+
+/* Souborový input */
+#importexport-section .import-export input[type="file"] {
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    padding: 4px;
+    background: var(--input-bg);
+}
+
+/* Popisek verze */
+#importexport-section .import-export label {
+    flex-basis: 100%;
+    text-align: right;
+    opacity: 0.6;
+    font-size: 12px;
+    margin-top: 6px;
 }
