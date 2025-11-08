@@ -720,36 +720,61 @@ if ('serviceWorker' in navigator) {
 }
 
 /* ---------- Inicializace aplikace a přepínání sekcí ---------- */
+let layoutMode = "side"; // "side" = levé menu, "top" = horní menu
+
+function updateLayoutMode() {
+    if (window.innerWidth < 768) {
+        layoutMode = "top";
+        document.body.classList.remove("layout-side");
+    } else {
+        layoutMode = "side";
+        document.body.classList.add("layout-side");
+    }
+
+    // automaticky otevři všechny collapsibles, pokud je aktivní levé menu
+    const allContents = document.querySelectorAll(".collapsible + .content");
+    allContents.forEach(c => {
+        if (layoutMode === "side") c.classList.add("active");
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    // 1️⃣ Načti uložená data a rovnou je vykresli
+    // 1️⃣ Načti data a vykresli
     loadAll(true);
 
-    // 2️⃣ Inicializuj levé menu
+    // 2️⃣ Urči layout režim
+    updateLayoutMode();
+    window.addEventListener("resize", updateLayoutMode);
+
+    // 3️⃣ Přepínání sekcí
     const menuButtons = document.querySelectorAll(".side-menu button");
     const sections = document.querySelectorAll(".main-panel .section");
 
-    // Skryj všechny sekce, zobraz první
     sections.forEach(sec => (sec.style.display = "none"));
     const firstSection = sections[0];
     if (firstSection) firstSection.style.display = "block";
     if (menuButtons[0]) menuButtons[0].classList.add("active");
 
-    // 3️⃣ Přepínání sekcí
     menuButtons.forEach(btn => {
         btn.addEventListener("click", () => {
-            // přepnutí aktivního tlačítka
             menuButtons.forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
 
             const target = btn.getAttribute("data-section");
 
-            // přepnutí viditelnosti sekcí
+            // zobraz jen odpovídající sekci
             sections.forEach(sec => {
                 sec.style.display = sec.id === `${target}-section` ? "block" : "none";
             });
 
-            // pokud jsme přepli na sekci Pomocník, znovu ji vyrenderuj
-            if (target === "helper") renderHelper();
+            // 🟢 když je aktivní levé menu, otevři collapsible uvnitř dané sekce
+            if (layoutMode === "side") {
+                const content = document.querySelector(`#${target}-section .content`);
+                if (content) content.classList.add("active");
+            }
+
+            // Pomocník se musí vždy přerenderovat
+            if (target === "helper") setTimeout(renderHelper, 50);
         });
     });
 });

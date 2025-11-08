@@ -124,6 +124,7 @@
                             </div>
                         </div>
                     </section>
+
                     <section class="section" id="story-section">
                         <button class="collapsible">📜 Příběh hrdiny</button>
                         <div class="content">
@@ -137,6 +138,7 @@
                             <textarea id="personality-trait" rows="3"></textarea>
                         </div>
                     </section>
+
                     <section class="section" id="classes-section">
                         <button class="collapsible">⚔️ Povolání</button>
                         <div class="content">
@@ -144,6 +146,7 @@
                             <button id="add-class" class="add-btn">+ Přidat povolání</button>
                         </div>
                     </section>
+
                     <section class="section" id="skills-section">
                         <button class="collapsible">🧩 Dovednosti a schopnosti</button>
                         <div class="content">
@@ -156,6 +159,7 @@
                             </div>
                         </div>
                     </section>
+
                     <section class="section" id="spells-section">
                         <button class="collapsible">✨ Kouzla a rituály</button>
                         <div class="content">
@@ -165,6 +169,7 @@
                             </div>
                         </div>
                     </section>
+
                     <section class="section" id="weapons-section">
                         <button class="collapsible">🗡️ Zbraně</button>
                         <div class="content">
@@ -174,6 +179,7 @@
                             </div>
                         </div>
                     </section>
+
                     <section class="section" id="equipment-section">
                         <button class="collapsible">🧥 Vybavení</button>
                         <div class="content">
@@ -185,32 +191,32 @@
                     </section>
 
                     <section class="section" id="helper-section">
-                        <h2>🐾 Pomocník</h2>
-
-                        <div class="helper-top-row">
-                            <div class="half">
-                                <input id="helper-name" class="top-info-input" placeholder="Jméno pomocníka"/>
-                            </div>
-                            <div class="half">
-                                <div class="stat-line">
-                                    <label><b>Pouto </b>
-                                        <input id="helper-bond-max" class="stat-max-input" type="number" min="1" max="18"/>
-                                    </label>
-                                    <div id="helper-bond-boxes" class="boxes-row"></div>
+                        <button class="collapsible">🐾 Pomocník</button>
+                        <div class="content">
+                            <div class="helper-top-row">
+                                <div class="half">
+                                    <input id="helper-name" class="top-info-input" placeholder="Jméno pomocníka"/>
+                                </div>
+                                <div class="half">
+                                    <div class="stat-line">
+                                        <label><b>Pouto </b>
+                                            <input id="helper-bond-max" class="stat-max-input" type="number" min="1"
+                                                   max="18"/>
+                                        </label>
+                                        <div id="helper-bond-boxes" class="boxes-row"></div>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="helper-single-row">
+                                <input id="helper-boundary" placeholder="Hranice"/>
+                                <input id="helper-payment" placeholder="Platba"/>
+                            </div>
+
+                            <label><strong>Charakteristika:</strong></label>
+                            <textarea id="helper-description" rows="4" placeholder="Popis pomocníka..."></textarea>
+                            <label><strong>Zvláštní schopnosti:</strong></label>
+                            <textarea id="helper-abilities" rows="3" placeholder="Seznam schopností..."></textarea>
                         </div>
-
-                        <div class="helper-single-row">
-                            <input id="helper-boundary" placeholder="Hranice"/>
-                            <input id="helper-payment" placeholder="Platba"/>
-                        </div>
-
-                        <label><strong>Charakteristika:</strong></label>
-                        <textarea id="helper-description" rows="4" placeholder="Popis pomocníka..."></textarea>
-
-                        <label><strong>Zvláštní schopnosti:</strong></label>
-                        <textarea id="helper-abilities" rows="3" placeholder="Seznam schopností..."></textarea>
                     </section>
 
                     <section class="section" id="importexport-section">
@@ -266,7 +272,6 @@
         setTheme(themeSelect.value);
     });
 </script>
-
 
 <script src="app.js"></script>
 </body>
