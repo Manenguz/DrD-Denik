@@ -712,33 +712,44 @@ const classesList = document.getElementById('classes-list');
 //     classesList.appendChild(newRow);
 // });
 
+/* ---------- Service Worker ---------- */
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js')
+    navigator.serviceWorker
+        .register('./sw.js')
         .then(() => console.log('Service Worker registered'));
 }
 
+/* ---------- Inicializace aplikace a přepínání sekcí ---------- */
 document.addEventListener("DOMContentLoaded", () => {
-  // 1️⃣ načti uložená data
-  loadAll(true); // chceme rovnou renderovat
+    // 1️⃣ Načti uložená data a rovnou je vykresli
+    loadAll(true);
 
-  // 2️⃣ inicializuj levé menu
-  const menuButtons = document.querySelectorAll(".side-menu button");
-  const sections = document.querySelectorAll(".main-panel .section");
+    // 2️⃣ Inicializuj levé menu
+    const menuButtons = document.querySelectorAll(".side-menu button");
+    const sections = document.querySelectorAll(".main-panel .section");
 
-  sections.forEach(sec => (sec.style.display = "none"));
-  const firstSection = sections[0];
-  if (firstSection) firstSection.style.display = "block";
-  if (menuButtons[0]) menuButtons[0].classList.add("active");
+    // Skryj všechny sekce, zobraz první
+    sections.forEach(sec => (sec.style.display = "none"));
+    const firstSection = sections[0];
+    if (firstSection) firstSection.style.display = "block";
+    if (menuButtons[0]) menuButtons[0].classList.add("active");
 
-  menuButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      menuButtons.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
+    // 3️⃣ Přepínání sekcí
+    menuButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            // přepnutí aktivního tlačítka
+            menuButtons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
 
-      const target = btn.getAttribute("data-section");
-      sections.forEach(sec => {
-        sec.style.display = sec.id === `${target}-section` ? "block" : "none";
-      });
+            const target = btn.getAttribute("data-section");
+
+            // přepnutí viditelnosti sekcí
+            sections.forEach(sec => {
+                sec.style.display = sec.id === `${target}-section` ? "block" : "none";
+            });
+
+            // pokud jsme přepli na sekci Pomocník, znovu ji vyrenderuj
+            if (target === "helper") renderHelper();
+        });
     });
-  });
 });
