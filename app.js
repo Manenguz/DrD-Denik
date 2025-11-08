@@ -45,7 +45,11 @@ let character = {
     spells: [],      // {name, source, desc}
     weapons: [],     // {name, price, desc}
     equipment: [],   // {name, price, desc}
-    story: {origin: "", adventures: ""},
+    story: {
+        origin: "",
+        adventuresTabs: [""],
+        activeAdventureIndex: 0
+    },
     extras: {racial: "", personality: ""},
     helper: {
         name: "",
@@ -168,8 +172,10 @@ function renderAll() {
     document.getElementById("xp-free").value = character.xp.free || 0;
 
     // story & extras
+
     document.getElementById("origin-story").value = character.story.origin || "";
-    document.getElementById("adventures").value = character.story.adventures || "";
+    renderAdventureTabs();
+
     document.getElementById("racial-ability").value = character.extras.racial || "";
     document.getElementById("personality-trait").value = character.extras.personality || "";
 
@@ -212,6 +218,62 @@ function renderAll() {
         if (saved) content.classList.add("active");
         else content.classList.remove("active");
     });
+}
+
+function renderAdventureTabs() {
+    const buttonsContainer = document.getElementById("adventure-buttons");
+    const textArea = document.getElementById("adventure-text");
+
+    if (!buttonsContainer || !textArea) return;
+
+    buttonsContainer.innerHTML = "";
+
+    const tabs = character.story.adventuresTabs || [""];
+    let activeIndex = character.story.activeAdventureIndex || 0;
+    if (activeIndex >= tabs.length) activeIndex = 0;
+
+    // render tlačítek
+    tabs.forEach((_, i) => {
+        const btn = document.createElement("button");
+        btn.textContent = i + 1;
+        btn.className = "adventure-tab" + (i === activeIndex ? " active" : "");
+        btn.addEventListener("click", () => {
+            saveCurrentAdventureText();
+            character.story.activeAdventureIndex = i;
+            renderAdventureTabs();
+        });
+        buttonsContainer.appendChild(btn);
+    });
+
+    // tlačítko přidat
+    const addBtn = document.createElement("button");
+    addBtn.textContent = "+";
+    addBtn.className = "adventure-tab add-tab";
+    addBtn.addEventListener("click", () => {
+        saveCurrentAdventureText();
+        character.story.adventuresTabs.push("");
+        character.story.activeAdventureIndex = character.story.adventuresTabs.length - 1;
+        renderAdventureTabs();
+        saveAll();
+    });
+    buttonsContainer.appendChild(addBtn);
+
+    // aktualizuj textarea podle aktivní záložky
+    textArea.value = tabs[activeIndex] || "";
+
+    // reaguje na psaní
+    textArea.oninput = () => {
+        character.story.adventuresTabs[activeIndex] = textArea.value;
+        saveAll();
+    };
+}
+
+function saveCurrentAdventureText() {
+    const textArea = document.getElementById("adventure-text");
+    const idx = character.story.activeAdventureIndex || 0;
+    if (textArea && character.story.adventuresTabs[idx] !== undefined) {
+        character.story.adventuresTabs[idx] = textArea.value;
+    }
 }
 
 /* ---------- Stat boxes 3-stavové ---------- */
