@@ -132,7 +132,10 @@
                             <textarea id="origin-story" rows="10" placeholder="Původ, motivace..."></textarea>
 
                             <label><strong>Prožitá dobrodružství:</strong></label>
-                            <textarea id="adventures" rows="10" placeholder="Seznam/úryvky dobrodružství..."></textarea>
+                            <div id="adventure-tabs">
+                                <div id="adventure-buttons"></div>
+                                <textarea id="adventure-text" rows="10" placeholder="Popis dobrodružství..."></textarea>
+                            </div>
 
                             <label><strong>Povahový rys:</strong></label>
                             <textarea id="personality-trait" rows="3"></textarea>
@@ -240,7 +243,7 @@
                             <button id="export-btn">⬇️ Exportovat JSON</button>
                             <input id="import-file" type="file" accept=".json"/>
                             <button id="reset-btn">🗑️ Reset deníku</button> <!-- nové tlačítko -->
-                            <br/><label style="display: block; text-align: right;">v1.1.0, created by Manenguz</label>
+                            <br/><label style="display: block; text-align: right;">v1.1.1, created by Manenguz</label>
                         </div>
                     </section>
                 </main>

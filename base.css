@@ -666,3 +666,31 @@ textarea:focus {
     font-size: 12px;
     margin-top: 6px;
 }
+
+#adventure-buttons {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+}
+
+.adventure-tab {
+    background: var(--button-bg);
+    border: 1px solid var(--button-border);
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+}
+
+.adventure-tab.active {
+    background: var(--box-active-bg);
+    border-color: var(--box-active-border);
+    color: #fff;
+}
+
+#adventure-buttons .add-tab {
+    background: var(--delete-btn-bg);
+    color: var(--delete-btn-text);
+}
